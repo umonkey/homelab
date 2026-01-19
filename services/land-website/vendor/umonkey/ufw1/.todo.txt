@@ -1,0 +1,17 @@
+LESS compiler: https://github.com/leafo/lessphp
+
+Создание проекта по образцу yii:
+- https://www.yiiframework.com/
+- https://www.yiiframework.com/image/tour/1.gif
+Включая create-project-cmd скрипт для создания папок и миграций, симлинков на документацию.
+
+Админка: кричать при возможности модификации скиптов.  Видимо тест по крону.
+
+https://scrutinizer-ci.com/docs/tools/php/php-scrutinizer/
+
+- [ ] SPA: link rel=edit is not updated.
+- [ ] Hierarchy: use ancestors tables, dump lb/rb.
+- [ ] UI spy: https://statamic.com/
+- [ ] Wiki: control page readers via yaml.
+- [ ] Wiki: refactor WikiService.
+- [ ] Wiki: add specific admin UI.

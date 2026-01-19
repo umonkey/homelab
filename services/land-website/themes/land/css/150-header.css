@@ -1,0 +1,129 @@
+/**
+ * Заголовок сайта.
+ **/
+header {
+    width: 100%;
+    margin: 0;
+    color: #333;
+    background-color: #fffff8;
+    z-index: 100;
+}
+header .title {
+    background-color: #fafafa;
+    padding: 32px 0 23px;
+}
+header .wrap {
+    width 100%;
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+header .title a {
+    display: inline-block;
+    line-height: 0;
+}
+header .title img {
+    width: 226px;
+    height: 80px;
+}
+header .bars {
+    display: none;
+}
+
+
+/**
+ * Меню с навигацией.
+ **/
+header .menu {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+header .menu ul {
+    list-style-type: none;
+    padding: 15px 0;
+    line-height: 40px;
+    width: 100%;
+    font-size: 16px;
+}
+header .menu li {
+    display: inline-block;
+    margin-right: 30px;
+}
+header .menu a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+    color: inherit;
+}
+header .menu .active a {
+    color: #888;
+}
+
+
+@media (max-width: 800px) {
+    header, header > div {
+        height: 50px;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 50px;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    header .title {
+        padding: 0;
+        background-color: transparent;
+    }
+    header .title .wrap {
+        line-height: 0;
+    }
+    header .title img {
+        width: 141px;
+        height: 50px;
+    }
+    header .menu {
+        flex-grow: 1;
+        text-align: right;
+        border: none;
+    }
+    header .menu ul {
+        padding: 0;
+        line-height: inherit;
+    }
+    header .bars {
+        display: none;
+    }
+    .page-header h1 {
+        padding-top: 10px !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+    header {
+        height: auto;
+    }
+    header .menu {
+        display: none;
+        border-top: 1px solid #eee;
+        margin-top: 5px;
+        text-align: center;
+    }
+    header .bars {
+        display: block;
+        flex-grow: 1;
+        text-align: right;
+        min-width: calc(100vw - 175px);
+    }
+    header .bars a {
+        display: inline-block;
+        padding: 0 10px;
+        color: inherit;
+        outline: none;
+    }
+    header .menu li {
+        margin: 0 10px;
+    }
+}

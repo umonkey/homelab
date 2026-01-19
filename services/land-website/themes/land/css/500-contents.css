@@ -1,0 +1,66 @@
+/**
+ * Ссылки в страницах.
+ **/
+article a {
+    box-shadow: #b4e7f8 0 -4px 0 0 inset;
+    text-decoration: none;
+    color: inherit;
+}
+article a:hover {
+    background-color: #b4e7f8;
+    color: #333;
+}
+
+
+/**
+ * Битые ссылки в вики -- красные.
+ **/
+article a.broken {
+    box-shadow: #800 0 -4px 0 0 inset;
+}
+article a.broken:hover {
+    background-color: #800;
+    color: #fff;
+}
+
+article a.btn {
+    box-shadow: none;
+}
+article p {
+    margin: 10px 0 20px;
+}
+article hr {
+    border: 0;
+    width: 100%;
+    height: 16px;
+    background: transparent url('/images/hr.png') no-repeat 50% 50%;
+    clear: both;
+}
+
+article h2 {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+article .meta {
+    color: #888;
+}
+
+.photoalbum {
+    line-height: 0;
+}
+.photoalbum a.image {
+    margin: 0 1px 1px 0;
+}
+a.image,
+figure > a {
+    box-shadow: none;
+    display: inline-block;
+    line-height: 0;
+}
+a.image:hover,
+figure > a:hover {
+    background-color: inherit;
+    color: inherit;
+}

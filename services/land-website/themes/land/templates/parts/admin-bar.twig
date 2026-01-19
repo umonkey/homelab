@@ -1,0 +1,6 @@
+{% if user.role == 'admin' %}
+    <div id='admin_bar'>
+        <div class='left'><i class='monkey'></i> ufw <a class='btn' href='/admin'><i class="fas fa-tachometer-alt"></i> admin</a>{% if edit_link %} <a class='btn edit' href='{{ edit_link }}'><i class="fas fa-pencil-alt"></i> edit page</a>{% endif %} <a class='btn' href='/wiki?name=draft'>drafts</a> <a class='btn' href='{{ request.uri }}{% if '?' in request.uri %}&amp;{% else %}?{% endif %}debug=tpl'><i class="fas fa-cogs"></i> dump</a></div>
+        <div class='right'><a href='https://github.com/umonkey/ufw1' target='_blank'>Git</a> &middot; <a href='/logout'>Log Out</a></div>
+    </div>
+{% endif %}

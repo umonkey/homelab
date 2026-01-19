@@ -1,0 +1,87 @@
+{% extends "layouts/base.twig" %}
+
+{% block more_head %}
+    <meta property="og:url" content="https://{{ host }}/wiki?name={{ page.name|url_encode }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+
+    {% if node.id %}
+        <meta property="og:image" content="{{ request.base }}/node/{{ node.id }}/kdpv"/>
+        <meta property="og:image:width" content="960"/>
+        <meta property="og:image:height" content="504"/>
+    {% endif %}
+
+    {% if "File:" in page.name %}
+        <meta name="robots" content="noindex"/>
+    {% endif %}
+
+    {% if page.prev %}
+        <link rel='prev' href='/wiki?name={{ page.prev|url_encode }}'/>
+    {% endif %}
+    {% if page.next %}
+        <link rel='next' href='/wiki?name={{ page.next|url_encode }}'/>
+    {% endif %}
+    <link rel='canonical' href='/wiki?name={{ page.name|url_encode }}'/>
+{% endblock %}
+
+{% block page_title %}{{ page.title }}{% if strings.site_name %} — {{ strings.site_name }}{% endif %}{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+        <h1 itemprop="name">{{ page.title }}</h1>
+        {% if page.subtitle %}
+            <p class='lead'>{{ page.subtitle }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block splash %}
+    {% if page.splash %}
+        <div id='splash'>
+            <picture>
+                {#
+                <source type='image/webp' srcset='{{ page.splash }}'/>
+                #}
+                <source type='image/jpg' srcset='{{ page.splash }}'/>
+                <img src='{{ page.splash }}'/>
+            </picture>
+            <a href='#content' class='scrolldown'><i class="fas fa-chevron-circle-down"></i></a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+{% block page_contents %}
+    {% include 'parts/wiki-meta.twig' %}
+
+    <div class="formatted" itemprop="articleBody">
+        {% if page.en %}
+            <p><i>You can read this page in English: <a href="/wiki?name={{ page.en }}">{{ page.en }}</a>.</i></p>
+        {% elseif page.ru %}
+            <p><i>Эта страница есть на русском языке: <a href="/wiki?name={{ page.ru }}">{{ page.ru }}</a>.</i></p>
+        {% endif %}
+
+        {% if "wiki:" in page.name %}
+            <pre>{{ page.text }}</pre>
+        {% elseif page.html %}
+            {{ page.html|typo|raw }}
+        {% endif %}
+    </div>
+
+    {% include 'parts/subscribe.twig' ignore missing %}
+
+    {% if page.prev or page.next %}
+        <div class='wikinav'>
+                <div class='prev'>
+                    {% if page.prev %}<a href='/wiki?name={{ page.prev }}'>Предыдущая заметка</a></a>{% endif %}
+                </div>
+                <div class='next'>
+                    {% if page.next %}<a href='/wiki?name={{ page.next }}'>Следующая заметка</a>{% endif %}
+                </div>
+        </div>
+    {% endif %}
+
+    {% if page.comments != 'off' %}
+        <div id="disqus_thread"{% if page.disqus_id %} data-id="{{ page.disqus_id }}"{% endif %}{% if page.title %} data-title="{{ page.title }}"{% endif %}></div>
+    {% endif %}
+{% endblock %}

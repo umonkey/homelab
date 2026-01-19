@@ -1,0 +1,37 @@
+.wikimeta {
+    color: #888;
+    font-size: 14px;
+}
+.wikimeta a {
+    color: inherit;
+    box-shadow: none;
+    text-decoration: underline;
+}
+.wikimeta a:hover {
+    background-color: inherit;
+    color: inherit;
+}
+
+/**
+ * Отключение ссылок на редактирование раздела.
+ **/
+.wiki-section-edit {
+    display: none;
+}
+
+.wikinav {
+    padding: 10px 0;
+    margin: 20px 0;
+}
+.wikinav > div > div {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+.wikinav .next {
+    text-align: right;
+}
+
+form.wikisource {
+    width: 100%;
+}

@@ -1,0 +1,50 @@
+.form-group .edit-buttons {
+    margin: 5px 0 0;
+}
+
+table.table .rowid {
+    text-align: right;
+    color: #888;
+}
+
+table.hover tr:hover {
+    background-color: #eee;
+}
+
+.fg-source:fullscreen {
+    background-color: #fff;
+    padding: 10px;
+}
+.fg-source:fullscreen label {
+    display: none;
+}
+.fg-source:fullscreen textarea {
+    height: calc(100vh - 80px);
+}
+
+.edit-buttons .btn {
+    margin-right: 5px;
+}
+
+.dashboard-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-column-gap: 10px;
+    grid-row-gap: 50px;
+}
+.dashboard-blocks h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+.dashboard-blocks > .block {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+table.small td {
+    font-size: 14px;
+}
+
+.admin-first {
+    margin-bottom: 20px;
+}

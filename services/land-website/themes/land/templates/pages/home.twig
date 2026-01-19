@@ -1,0 +1,97 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}Семейный лесопитомник «Ясный лес»{% endblock %}
+
+{% block more_head %}
+    <meta name='description' content='Блог о жизни в деревне, с 2012 года. О личном хозяйстве, жизни экопоселения, туристическом лагере.'/>
+{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block splash %}
+    <div id='splash' class='top'>
+        <picture>
+            <source type='image/webp' srcset='/images/splash4.webp'/>
+            <source type='image/jpg' srcset='/images/splash4.jpg'/>
+            <img src='/images/splash4.jpg'/>
+        </picture>
+        <a href='#content' class='scrolldown'><i class="fas fa-arrow-circle-down"></i></a>
+    </div>
+
+    <section id='factoids'>
+        <div class='container'>
+            <ul class='hflex'>
+                <li><a href='/wiki?name=blog'><strong>8 лет</strong> <span>жизни на земле</span></a></li>
+                <li><a href='/wiki?name=camping'><strong>225 человек</strong> <span>посетило лагерь</span></a></li>
+                <li><a href='/wiki?name=nursery'><strong>12,000 деревьев</strong> <span>растёт в питомнике</span></a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block page_contents %}
+    <div class='hometiles'>
+        <div class='row'>
+            <picture class='picture'>
+                <source type='image/webp' srcset='/images/hometile-us.webp'/>
+                <img src='/images/hometile-us.jpg'/>
+            </picture>
+            <div class='text'>
+                <h2>Наша история</h2>
+                <p>Мы — Владимир и Юлия Фрунзе, в 2012 году уехали из Питера в глухую деревню.&nbsp; Как это случилось, какие у нас цели, почему именно сюда, на что мы живём?</p>
+                <div><a class='btn btn-primary' href='/wiki?name=about-us'>Узнать больше</a></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <picture class='picture'>
+                <source type='image/webp' srcset='/images/hometile-tractor.webp'/>
+                <img src='/images/hometile-tractor.jpg'/>
+            </picture>
+            <div class='text'>
+                <h2>Блог о жизни в деревне</h2>
+                <p>Мы с нуля учимся земледелию и автономной жизни.&nbsp; В&nbsp;нашем блоге описан весь наш путь, видно как меняется восприятие жизни на земле.</p>
+                <div><a class='btn btn-primary' href='/wiki?name=blog'>Читать блог</a></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <picture class='picture'>
+                <source type='image/webp' srcset='/images/hometile-team.webp'/>
+                <img src='/images/hometile-team.jpg'/>
+            </picture>
+            <div class='text'>
+                <h2>Устойчивое поселение</h2>
+                <p>Сможет ли поселение существовать бесконечно долго?&nbsp; Что для этого нужно?&nbsp; Сейчас это главный вызов для нас.</p>
+                <div><a class='btn btn-primary' href='/wiki?name=blog'>Читать блог</a></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <picture class='picture'>
+                <source type='image/webp' srcset='/images/hometile-nursery.webp'/>
+                <img src='/images/hometile-nursery.jpg'/>
+            </picture>
+            <div class='text'>
+                <h2>Питомник</h2>
+                <p>Саженцы — основное наше занятие.&nbsp; Мы растим их чтобы улучшать экосистему вокруг нас.&nbsp; Мы рады поделиться полученным опытом.</p>
+                <div><a class='btn btn-primary' href='/wiki?name=nursery'>Узнать больше</a></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <picture class='picture'>
+                <source type='image/webp' srcset='/images/hometile-camping.webp'/>
+                <img src='/images/hometile-camping.jpg'/>
+            </picture>
+            <div class='text'>
+                <h2>Лагерь</h2>
+                <p>Летом у нас работает палаточный лагерь, в котором можно отдохнуть, посмотреть на поселение, при желании — перенять наш опыт.&nbsp; Планируйте визит заранее.</p>
+                <div><a class='btn btn-primary' href='/wiki?name=camping'>Забронировать место</a></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

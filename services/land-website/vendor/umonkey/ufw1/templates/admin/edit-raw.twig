@@ -1,0 +1,39 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}Редактирование документа{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+        <h1>Редактирование исходника документа</h1>
+    </div>
+{% endblock %}
+
+{% block page_contents %}
+    {% include 'parts/admin-breadcrumbs.twig' with {'path': [{
+        'label': 'Список документов',
+        'link': '/admin/nodes',
+    }, {
+        'label': 'Редактирование',
+        'link': request.uri,
+    }]} %}
+
+    <p class='lead'>Здесь можно изменить внутренние свойства документа, если это вдруг очень нужно, а форма редактирование не позволяет.</p>
+
+    <form class='async' action='/admin/nodes/save' method='post'>
+        <input type='hidden' name='node[id]' value='{{ node.id }}'/>
+
+        <div class='form-group'>
+            <label>Содержимое документа</label>
+            <textarea class='form-control code' style='min-height: 315px' name='raw_node' spellcheck='false'>{{ code }}</textarea>
+        </div>
+
+        <div class='form-actions'>
+            <button class='btn btn-primary'>Сохранить изменения</button>
+            <a class='btn btn-default btn-icon' href='/admin/nodes/{{ node.id }}/edit{% if request.get.back %}?back={{ request.get.back }}{% endif %}' title='Редактировать сырец'><i class="fas fa-pen"></i></a>
+            или <a href='{% if request.get.back %}{{ request.get.back }}{% else %}/admin/nodes{% endif %}'>вернуться назад</a>
+        </div>
+
+        <div class='msgbox'></div>
+    </form>
+{% endblock %}
+

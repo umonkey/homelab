@@ -1,0 +1,128 @@
+2020-02-24:
+- Wiki: refactored as action-domain-controller.
+
+2020-02-21:
+- Recursive dependency injection.
+
+2020-02-18:
+- Database: fetchk method added.
+- Twig filter short_name is now space proof.
+- Twig filter price converts input to float.
+
+2020-02-14:
+- Fixed primary button color on hover.
+- NodeRepo: count nodes, update wiki keys.
+- Wiki: better page indexing.
+- Wiki: embedded file info in age editor.
+- Wiki: fixed links to local files.
+- Wiki: removed unpublished pages from wiki index.
+
+2020-02-06:
+- Fixed missing admin bar on search and error pages.
+
+2020-02-04:
+- SPA: fixed page title update.
+- Wiki: fixed link generation.
+
+2020-02-03:
+- Twig: use cache_dir, if set.
+
+2020-02-01:
+- SPA: update window title.
+- RSS generator for node types.
+- Wiki: simple source to html rendering method.
+- SPA: better bars spinner animation.
+- Wiki editor update, new file browser.
+
+2020-01-31:
+- Fixed duplicate charset in content type.
+- S3 file list contains etag.
+- Fixed mime type in sitemap.xml
+- Better rewrite support.
+- Admin UI: dashboard blocks.
+- Admin UI: rewrites editor.
+- SPA: ignore ctrl and shift clicks.
+
+2020-01-30:
+- Basic HomeController, redirects to wiki or shows home.twig
+
+2020-01-29:
+- Fixed base URI in sitemap.xml
+
+2020-01-28:
+- Fixed special wiki pages using wrong templates.
+- Fixed passing strings to templates.
+- Compressor can now blacklist files.
+- Added dependency injection for controllers.
+
+2020-01-27:
+- Admin: route list in admin/routes.
+- Auth service improvements, VK api.
+
+2020-01-26:
+- Added vim snippets for new files.
+- Added snippets for most files.
+- Moved session and auth code to SessionService and AuthService.
+- Moved container setup to Ufw1\App.
+
+2020-01-24:
+- Organize templates in folders: layouts, pages, errors.
+- Support for template variants: [node-1.twig, node-wiki.twig, node.twig].
+
+2020-01-22:
+- SPA fixes.
+- PHP code style fixes.
+- Moved configs to config/.
+- Moved sources from src/Ufw1 to src.
+
+2020-01-20:
+- Added base controller class.
+- Added service base class.
+- Moved some classes to Services.
+- Deleted old schema files.
+
+2020-01-18:
+- SPA: copy link[rel=edit].
+- SPA: add wiki section edit links properly.
+
+2020-01-17:
+- Wiki: pass disqus ids to the template.
+- Wiki: comments and meta can be turned off.
+- Wiki: embedding images with webp, aspect ratio.
+- Wiki: can now rename page with the 'name' property.
+
+2020-01-16:
+- Wiki: display placeholders for missing images.
+- Wiki: TaskList extension for Markdown.
+- Fixed saving new files.
+
+2020-01-15:
+- Fixed filepicker callback.
+- Fixed typography for multiline paragraphs.
+- Textarea field now supports buttons.
+- Fixed editor_insert for non-wiki editors.
+
+2020-01-12:
+- Fixed some notices.
+- Fixed S3 console link in the admin UI.
+- Thumbnailer: support for WebP.
+- Wiki: embed YouTube, better file handling (figure).
+- FileFactory: save new nodes in one go.
+- Wiki: ensure two blank lines before sections.
+
+2020-01-11:
+- Shortener template added.
+- SPA: white list for links (only wiki by default).
+
+2019-12-30:
+- Added migrations for missing tables search, search_log, odict.
+- Added default register.twig template.
+- TaskQ errors are now reported with code 500.
+- Pass template strings from the templates[strings][$language] array.
+- Wiki: setting homePage renamed as home_page.
+- Wiki: proper interwiki link label for e.g. [[w:Hello]].
+- Wiki: reindex pages while updating, without taskq.
+
+2019-12-29:
+- CSS/JS compressor now needs a source map paths as arguments, can process
+  multiple with ona call.

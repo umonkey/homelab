@@ -1,0 +1,20 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}Страница не найдена{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+        <h1>Страница не найдена</h1>
+    </div>
+{% endblock %}
+
+{% block page_contents %}
+    <p>В базе знаний <strong>нет статьи</strong> с названием «{{ page.name }}».</p>
+    <p>Вы можете:</p>
+    <ul>
+        <li><a href="/search?query={{ page.name }}">найти упоминания</a> этого названия в других статьях;</li>
+        {% if edit_link %}
+            <li><a href="{{ edit_link }}">создать статью</a> с таким названием.</li>
+        {% endif %}
+    </ul>
+{% endblock %}

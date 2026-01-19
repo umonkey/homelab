@@ -1,0 +1,37 @@
+/**
+ * VK community chat widget, light version.
+ *
+ * Instead of loading the whole thing, with multiple scripts and events,
+ * we display this static icon and load the widget on click.
+ **/
+
+#vk_community_messages {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+#vk_community_messages a {
+    text-decoration: none;
+}
+#vk_community_messages span {
+    background-color: rgba(46, 48, 51, 0.9);
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0 12px;
+    vertical-align: middle;
+    margin: 0 8px 0 0;
+}
+#vk_community_messages i {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #5f82a6;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABK0lEQVR4Ae3VJVBtQRzH8ef+cHe3BJVK7+3ScO0UrDe0U2+l4S4Jd3d3h2/YnVnkustv5nP8/I/u7idvnDPPz8+RqMcA9nAn5gNie6S5hf+hBpfQl0vU4J+pdz0HUzKHSHF+BKJ1Ff+GMZiTMXH+dyygFf/eXqAAliRf1KkU6+MIVy/QB0vSJ+pkq9vwWV7gBJbkRNQJhJpceYF9K13gH9S0ywt0WukVZUDNtryAxkofuQxq9uUFvmLUwt/0CyahplP9k0IwY0FDK8LbaN62B1804smUroJ5Dq6hZhRfdbXsVcjc4V5XZ8dyodivZgbBuoqnQ+YcSTqOy0Qb1DyhEb76Oj0t9sTJ6R/s/40qzONWkNkwplf9amIXH4UDyGTZYoCKRTMWof3kVnkBUG6Njf3a3hoAAAAASUVORK5CYII=);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    vertical-align: middle;
+}

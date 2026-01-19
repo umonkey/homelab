@@ -1,0 +1,7 @@
+div.map {
+    height: 500px;
+    background-color: #ddd;
+}
+div.map a {
+    box-shadow: none;
+}

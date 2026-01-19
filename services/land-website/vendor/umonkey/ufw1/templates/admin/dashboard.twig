@@ -1,0 +1,24 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}Админка{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+        <h1>Управление сайтом</h1>
+    </div>
+{% endblock %}
+
+{% block page_contents %}
+    {% include 'parts/admin-breadcrumbs.twig' with {'path': []} %}
+
+    {% if blocks %}
+        <div class='dashboard-blocks'>
+            {% include 'admin/blocks/first.twig' ignore missing %}
+            {% for k, v in blocks %}
+                {% set fname = "admin/blocks/" ~ k ~ ".twig" %}
+                {% include [fname, "admin/blocks/default.twig"] with {'key': k, 'data': v} %}
+            {% endfor %}
+            {% include 'admin/blocks/warnings.twig' with {'data': warnings} %}
+        </div>
+    {% endif %}
+{% endblock %}

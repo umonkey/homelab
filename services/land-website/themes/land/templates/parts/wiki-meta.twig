@@ -1,0 +1,3 @@
+{% if page.section == 'blog' and page.date %}
+    <div class='wikimeta'>{{ node.date|date_human }}, <a href='/wiki?name=blog'>Блог о жизни в деревне</a>, автор <a href='/wiki?name=author'>Владимир Фрунзе</a>{% if node.published == 0 %} &middot; <a href='/wiki?name=draft'>черновик</a>{% endif %}.</div>
+{% endif %}

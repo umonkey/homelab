@@ -1,0 +1,20 @@
+/**
+ * Оформление таблиц в вики-страницах.
+ **/
+.formatted table {
+    border-collapse: collapse;
+}
+.formatted table td,
+.formatted table th {
+    padding: 5px 10px;
+}
+.formatted table tbody td {
+    border: 1px solid #ccc;
+}
+.formatted table thead th {
+    color: #444;
+    font-size: 14px;
+}
+.formatted tbody tr:hover {
+    background-color: #f8f8f8;
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}ru{% endif %}" prefix="og: http://ogp.me/ns#">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width"/>
+
+        <!-- https://github.com/audreyr/favicon-cheat-sheet -->
+        <!-- http://www.favicon-generator.org/ -->
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png"/>
+        <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png"/>
+        <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png"/>
+        <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png"/>
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png"/>
+        <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/>
+
+        <link rel="manifest" href="/manifest.json"/>
+        <meta name="msapplication-config" content="/browserconfig.xml"/>
+
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png"/>
+        <meta name="theme-color" content="#ffffff"/>
+
+        <!-- https://msdn.microsoft.com/en-us/library/dn320426(v=vs.85).aspx -->
+        <meta name="msapplication-config" content="none"/>
+
+        <!-- pinterest -->
+        <meta name="p:domain_verify" content="18378c35890598c510b9ec5f63d98b55"/>
+
+        <link rel="stylesheet" type="text/css" href="/css/libs.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/app.min.css"/>
+
+        {% if edit_link %}
+            <link rel="edit" title="Редактировать страницу" href="{{ edit_link }}"/>
+            <link rel="alternate" type="application/x-wiki" title="Редактировать страницу" href="{{ edit_link }}"/>
+        {% endif %}
+
+        {% if canonical_link %}
+            <link rel="canonical" href="{{ canonical_link }}"/>
+        {% endif %}
+
+        <meta name="og:site_name" content="{{ strings.site_name }}"/>
+        {% block more_head %}{% endblock %}
+
+        <title>{% block page_title %}{% if title %}{{ title }}{% else %}Wiki{% endif %} — {{ strings.site_name }}{% endblock %}</title>
+    </head>
+    <body>
+        <div class='{% block body_class %}{{ body_class }}{% endblock %} spa-container{% if page.splash %} with-splash{% endif %}'>
+            {% block header %}
+                {% include 'parts/header.twig' %}
+            {% endblock %}
+
+            {% block splash %}{% endblock %}
+
+            <main>
+                <div class='container'>
+                    {% include 'parts/breadcrumbs.twig' %}
+
+                    {% block page_header %}
+                        <div class='page-header'>
+                            <h1>It Works!</h1>
+                        </div>
+                    {% endblock %}
+
+                    <article>
+                        {% block page_contents %}
+                            <p>На этой странице пока пусто.</p>
+                        {% endblock %}
+                    </article>
+                </div>
+            </main>
+
+            {% block footer %}
+                <footer>
+                    <div class='container'>
+                        <p><a href="/">Главная</a> &middot; <a href="/wiki?name=nursery">питомник</a> &middot; <a href="/wiki?name=blog">блог</a> &middot; <a href="/wiki?name=camping">волонтёрам</a> &middot; <a href="/wiki?name=sitemap">карта сайта</a></p>
+                        <p>&copy; 2012–2019 <a href="/wiki?name=about-us">Владимир и&nbsp;Юлия Фрунзе</a> &middot; <a href="/wiki?name=feedback">написать письмо</a> &middot; <a href="https://vk.com/umonkey.land" target="_blank" title="Жизнь в&nbsp;деревьях">vk.com</a> &middot; <a href="https://twitter.com/umonkey" target="_blank">twitter</a> &middot; <a href="https://www.youtube.com/user/umonkey/videos" target="_blank">youtube</a> &middot; <a href="https://www.instagram.com/nebo_eco_village/" target="_blank">instagram</a></p>
+                    </div>
+                </footer>
+            {% endblock %}
+
+            <div id="block" style="display: none"></div>
+
+            {% if jsdata %}<script>window.jsdata = {{ jsdata|raw }};</script>{% endif %}
+        </div>{# .spa-container #}
+
+        {% include 'parts/chat-widget.html.twig' %}
+
+        <script type="text/javascript" src="/js/libs.min.js"></script>
+        {% if request.host == "land.local" %}
+            <script type="text/javascript" src="/js/app.js"></script>
+        {% else %}
+            <script type="text/javascript" src="/js/app.min.js"></script>
+        {% endif %}
+        {% block disqus %}{% endblock %}
+
+        {% include "parts/counters.twig" %}
+    </body>
+</html>

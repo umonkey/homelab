@@ -1,0 +1,57 @@
+table.table {
+    border-collapse: collapse;
+}
+table.table th,
+table.table td {
+    padding: 4px 10px;
+    text-align: left;
+}
+
+table.table .nowrap,
+table.table .number {
+    text-align: right;
+    white-space: nowrap;
+}
+
+table.table td.check {
+    text-align: center;
+}
+
+table.grid {
+    border-collapse: collapse;
+}
+table.grid thead th {
+    color: #444;
+    font-weight: bold;
+    font-size: 85%;
+}
+table.grid tbody td {
+    border: solid 1px #ccc;
+}
+
+
+table.compact {
+    font-size: 15px;
+}
+
+
+table.lines thead th,
+table.lines tbody td {
+    border-bottom: 1px solid #eee;
+    font-weight: normal;
+}
+table.lines thead th {
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+table.mono tbody td {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+
+table.hover tbody tr:hover {
+    background-color: #f0f0f0;
+}

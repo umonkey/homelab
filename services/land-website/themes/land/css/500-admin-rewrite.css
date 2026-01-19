@@ -1,0 +1,14 @@
+form.search.rewrite {
+    margin-bottom: 50px;
+}
+
+table.rewrite td:nth-child(1) {
+    width: 100%;
+}
+table.rewrite td:nth-child(2) {
+    width: 400px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

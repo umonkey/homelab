@@ -1,0 +1,114 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Import pages from old Poole installation.
+ **/
+
+require __DIR__ . '/../vendor/autoload.php';
+
+// Instantiate the app
+$settings = require __DIR__ . '/../src/settings.php';
+$app = new \Slim\App($settings);
+
+// Set up dependencies
+require __DIR__ . '/../src/dependencies.php';
+
+// Register middleware
+require __DIR__ . '/../src/middleware.php';
+
+// Register routes
+require __DIR__ . '/../src/routes.php';
+
+if (count($argv) != 2) {
+    printf("Usage: %s old_input_dir\n", $argv[0]);
+    exit(1);
+}
+
+$root = realpath($argv[1]);
+if (false === $root) {
+    printf("Folder %s does not exist.\n", $argv[1]);
+    exit(1);
+}
+
+$container = $app->getContainer();
+$nf = $container->get('node');
+$db = $container->get('database');
+
+$db->beginTransaction();
+$now = strftime('%Y-%m-%d %H:%M:%S');
+
+$db->query("DELETE FROM `nodes` WHERE `type` IN ('blog', 'article')");
+
+$files = find_files($root, '@\.md$@');
+foreach ($files as $name => $f) {
+    $url = substr($name, strlen($root));
+    $url = str_replace('/index.md', '/', $url);
+    $url = str_replace('.md', '.html', $url);
+
+    $page = parse_page(file_get_contents($name));
+    $page['url'] = $url;
+    $page['published'] = 1;
+    $page['deleted'] = 0;
+
+    if (isset($page['date'])) {
+        $ts = strtotime($page['date']);
+        $page['created'] = strftime('%Y-%m-%d %H:%M:%S', $ts);
+        unset($page['date']);
+    }
+
+    if (preg_match('@^/blog/\d+/@', $url))
+        $page['type'] = 'blog';
+    else
+        $page['type'] = 'article';
+
+    $page['text'] = process_files($page['text']);
+
+    $node = $nf->save($page);
+}
+
+$db->commit();
+
+
+function find_files($root, $filter = null)
+{
+    $di = new RecursiveDirectoryIterator($root);
+    $i = new RecursiveIteratorIterator($di);
+
+    if ($filter)
+        $i = new RegexIterator($i, $filter);
+
+    return $i;
+}
+
+
+function parse_page($text)
+{
+    $props = [];
+
+    $lines = explode("\n", $text);
+    foreach ($lines as $idx => $line) {
+        if (preg_match('@^([^:]+):\s+(.+)$@', $line, $m)) {
+            $k = trim($m[1]);
+            $v = trim($m[2]);
+            if ($k == 'title')
+                $k = 'name';
+            $props[$k] = $v;
+        }
+
+        elseif (0 === strpos($line, '---')) {
+            $lines = array_slice($lines, $idx + 1);
+            $text = implode("\n", $lines);
+            $props['text'] = $text;
+            return $props;
+        }
+    }
+
+    debug($lines);
+}
+
+
+function process_files($text)
+{
+    // debug($text);
+    return $text;
+}

@@ -1,0 +1,10 @@
+{% if comments %}
+    <hr/>
+    <div class="comments">
+        {% for c in comments %}
+            <div class="comment">
+                <div class="text">{{ c.text }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

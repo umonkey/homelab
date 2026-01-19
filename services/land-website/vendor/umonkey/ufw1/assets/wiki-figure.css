@@ -1,0 +1,20 @@
+figure {
+    margin: 20px 0 40px;
+    padding: 0;
+    max-width: 100%;
+}
+figure > a {
+    display: inline-block;
+    line-height: 0;
+}
+
+figcaption {
+    margin: 10px 0 0;
+    color: #888;
+    font-size: 14px;
+}
+
+figure picture {
+    display: block;
+    line-height: 0;
+}

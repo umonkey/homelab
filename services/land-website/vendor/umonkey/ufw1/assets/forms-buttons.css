@@ -1,0 +1,48 @@
+.form-actions .btn {
+    margin-right: 5px;
+    vertical-align: baseline;
+}
+.btn {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 1em;
+    color: #444;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.btn:hover {
+    background-color: #ccc;
+}
+.btn-primary {
+    background-color: #428bca;
+    color: #fff;
+    border-color: #357ebd;
+}
+.btn-primary:hover {
+    background-color: #357ebd;
+    color: #fff;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.btn-icon {
+    width: 30px;
+    text-align: center;
+    padding: 0;
+}
+.btn.lsep {
+    margin-left: 20px;
+}

@@ -1,0 +1,52 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}Поиск{% endblock %}
+
+{% block page_header %}
+    <div class='page-header'>
+        <h1>Поиск</h1>
+    </div>
+{% endblock %}
+
+{% block page_h1 %}Результаты поиска{% endblock %}
+
+{% block more_head %}
+    <meta name="robots" contents="noindex, follow"/>
+{% endblock %}
+
+{% block page_contents %}
+    {% include 'parts/search-form.twig' %}
+
+    {% if has_page %}
+        <p>Есть страница «<a href="/wiki?name={{ wikiName }}">{{ wikiName }}</a>».</p>
+    {% elseif wikiName %}
+        <p>Страницы «{{ wikiName }}» нет, но вы можете <a href="/wiki/edit?name={{ wikiName }}">создать её</a>.</p>
+    {% endif %}
+
+    {% for res in results %}
+        <div class="result{% if res.image %} with_img{% endif %}">
+            {% if res.image %}
+                <a class="img" href="{{ res.link }}" title="{{ res.title }}"><img src="{{ res.image }}" alt="{{ res.title }}"/></a>
+            {% endif %}
+            <p class="title"><a href="{{ res.link }}">{{ res.title }}</a></p>
+            {% if res.snippet %}
+                <p class="snippet">{{ res.snippet }}</p>
+            {% else %}
+                <p class="snippet">Описание этой страницы отсутствует.</p>
+            {% endif %}
+            {% if res.updated %}
+                <p class="meta">{{ res.words }} {{ res.words|sklo('слово', 'слова', 'слов') }}, последняя редакция от {{ res.updated|date_simple }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    {% if results %}
+        {# nothing #}
+    {% elseif search_error %}
+        <p>Извините, поиск временно не работает.{% if host == "localhost:8080" %}&nbsp; Для работы поиска на тестовом сервере нужно параллельно запустить <code>make search</code>.{% endif %}</p>
+        <p>Попробуйте <a href="https://yandex.ru/search/site/?searchid=2319971&amp;text={{ query }}&amp;web=0&amp;l10n=ru">поискать Яндексом</a> или найти нужную страницу в <a href="/index">алфавитном указателе</a>.</p>
+        <p>Создать страницу «<a href="/wiki/edit?name={{ query }}">{{ query }}</a>»</p>
+    {% elseif query %}
+        <p>К сожалению, по этому запросу ничего не найдено.</p>
+    {% endif %}
+{% endblock %}

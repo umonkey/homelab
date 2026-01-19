@@ -1,0 +1,25 @@
+{% include 'parts/admin-bar.twig' %}
+
+<header>
+    <div class='title'>
+        <div class='wrap'>
+            <a href='/'>
+                <img src='/images/logo-trees.png' alt='Ясный лес'/>
+            </a>
+        </div>
+    </div>
+
+    <div class='bars'>
+        <a href='/'><i class="fas fa-bars"></i></a>
+    </div>
+
+    <div class='menu'>
+        <ul class='wrap'>
+            <li class='{% if page.name == 'blog' or page.section == 'blog' %}active{% else %}inactive{% endif %}'><a href='/wiki?name=blog'>Блог</a></li>
+            <li class='{% if page.name == 'camping' %}active{% else %}inactive{% endif %}'><a href='/wiki?name=camping'>Лагерь</a></li>
+            <li class='{% if page.name == 'nursery' %}active{% else %}inactive{% endif %}'><a href='/wiki?name=nursery'>Питомник</a></li>
+            <li class='{% if page.name == 'about-us' %}active{% else %}inactive{% endif %}'><a href='/wiki?name=about-us'>О нас</a></li>
+            <li class='bars'></li>
+        </ul>
+    </div>
+</header>

@@ -1,0 +1,48 @@
+{##
+ # Display rewrite rules.
+ # Please expand it.
+ #}
+{% extends 'layouts/admin.twig' %}
+
+{% block page_title %}Редиректы{% endblock %}
+
+{% block page_header %}
+    <div class='page-header'>
+        <h1>Таблица редиректов</h1>
+    </div>
+{% endblock %}
+
+{% block page_contents %}
+    {% include 'parts/admin-breadcrumbs.twig' with {'path': [{
+        'label': 'Редиректы',
+        'link': request.get.path,
+    }]} %}
+
+    <form class='search rewrite' data-src='{{ request.path }}'>
+        <input id='rewrite_search' type='search' name='query' placeholder='Поиск по базе редиректов&hellip;' autocomplete='off' autofocus/>
+        <button class='btn btn-primary' type='button'><i class="fas fa-search"></i></button>
+    </form>
+
+    <div id='results'>
+        {% if rows %}
+            <table class='table grid small rewrite'>
+                <thead>
+                    <tr>
+                        <th>Откуда</th>
+                        <th>Куда</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                        <tr>
+                            <td><a href='/admin/rewrite/{{ row.id }}/edit'>{{ row.src }}</a></td>
+                            <td><a href='{{ row.dst }}'>{{ row.dst }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Нет подходящих записей.</p>
+        {% endif %}
+    </div>
+{% endblock %}

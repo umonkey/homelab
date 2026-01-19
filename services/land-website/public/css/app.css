@@ -1,0 +1,1422 @@
+/* vendor/umonkey/ufw1/assets/admin-files.css */ /**
+ * File node list, at /admin/nodes/file
+ **/
+.admin_files {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.admin_files .file {
+    display: block;
+    position: relative;
+    min-height: 104px;
+    margin-bottom: 20px;
+    margin-left: -2px;
+}
+.admin_files .thumbnail {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    line-height: 0
+}
+.admin_files img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #f8f8f8;
+    padding: 1px;
+}
+.admin_files .info {
+    margin-left: 114px;
+}
+
+/* vendor/umonkey/ufw1/assets/admin.css */ div.node-dump {
+    white-space: pre;
+    font-family: 'Fira Code', monospace;
+    background-color: #eee;
+    padding: 5px 10px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+table.nodes tr.edited {
+    background-color: #e8e8e8;
+}
+
+table.nodes tr.unpublished {
+    color: #888;
+}
+table.nodes tr.unpublished a {
+    color: inherit;
+}
+table.nodes td.extlink a {
+    color: inherit;
+}
+table.nodes tr.unpublished td.extlink a {
+    display: none;
+}
+table.nodes .wide {
+    width: 100%;
+}
+table.nodes input[type=checkbox] {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+
+.node-actions {
+    margin: -10px 0 20px 0;
+}
+
+form.search input {
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    margin: 0;
+    display: inline-block;
+    width: calc(100% - 70px);
+    max-width: 100%;
+    padding: 0 10px;
+}
+form.search .btn {
+    width: 30px;
+    padding: 0;
+    text-align: center;
+    margin: 0 0 0 5px;
+}
+
+td.nowrap {
+    white-space: nowrap;
+}
+td.check {
+    text-align: center;
+}
+
+
+/**
+ * URL shortener.
+ * Available at /admin/nodes/sokr
+ **/
+form.sokr input {
+    width: 500px;
+    border: 1px solid #ccc;
+    line-height: 28px;
+    height: 30px;
+    padding: 0 10px;
+    width: 100%;
+    max-width: calc(100% - 105px);
+    background-color: #f8f8f8;
+    margin: 0 5px 0 0;
+    box-sizing: border-box;
+}
+form.sokr button {
+    width: 100px;
+}
+
+/* vendor/umonkey/ufw1/assets/async.css */ #waitblock {
+    display: none;
+}
+
+body.wait #waitblock {
+    display: block;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1020;
+}
+
+.progressbar {
+    width: 100%;
+    background-color: #932727;
+    height: 20px;
+    position: relative;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.progressbar .done {
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff9231;
+    background-image: url(/images/progress.gif);
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    border-radius: 5px;
+    z-index: 1;
+}
+.progressbar .label {
+    text-align: center;
+    color: #ddd;
+    line-height: 20px;
+    font-size: 14px;
+    z-index: 2;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.msgbox {
+    margin-top: 20px;
+    white-space: pre-wrap;
+}
+
+/* vendor/umonkey/ufw1/assets/breadcrumbs.css */ ol.breadcrumbs {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    color: #aaa;
+}
+
+ol.breadcrumbs a {
+    color: inherit;
+}
+
+ol.breadcrumbs li {
+    display: inline-block;
+}
+ol.breadcrumbs li:after {
+    content: " » ";
+    margin-right: .25em;
+}
+
+ol.breadcrumbs li:last-child:after {
+    content: none;
+}
+ol.breadcrumbs li:last-child a {
+    text-decoration: none;
+    cursor: inherit;
+}
+
+/* vendor/umonkey/ufw1/assets/file-fields.css */ form a.thumbnail {
+    display: inline-block;
+    margin: 0 1px 1px 0;
+    line-height: 0;
+    position: relative;
+}
+form a.thumbnail img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+form a.thumbnail .file-delete {
+    display: block;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.thumbnails a.pick {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+    color: #888;
+    font-size: 40px;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* vendor/umonkey/ufw1/assets/forms-buttons.css */ .form-actions .btn {
+    margin-right: 5px;
+    vertical-align: baseline;
+}
+.btn {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 1em;
+    color: #444;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.btn:hover {
+    background-color: #ccc;
+}
+.btn-primary {
+    background-color: #428bca;
+    color: #fff;
+    border-color: #357ebd;
+}
+.btn-primary:hover {
+    background-color: #357ebd;
+    color: #fff;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.btn-icon {
+    width: 30px;
+    text-align: center;
+    padding: 0;
+}
+.btn.lsep {
+    margin-left: 20px;
+}
+
+/* vendor/umonkey/ufw1/assets/forms.css */ .form-group {
+    margin: 10px 0 20px;
+}
+.form-control {
+    display: block;
+}
+.form-actions {
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+form .msgbox {
+    margin: 20px 0;
+    background-color: rgba(255, 0, 0, 0.25);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: solid 1px rgba(255, 0, 0, 0.5);
+    display: none;
+}
+
+input[type=text].form-control,
+input[type=password].form-control,
+input[type=number].form-control,
+textarea.form-control {
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    line-height: 28px;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+}
+input.form-control.short,
+input[type=number].form-control {
+    width: 100px;
+}
+input[type=text].form-control.wide {
+    width: 100%;
+}
+textarea.form-control {
+    min-height: 50px;
+}
+textarea.code {
+    font-family: 'Fira Code', monospace;
+    line-height: 1.25em;
+    padding: 5px 10px;
+    white-space: pre;
+}
+textarea.markdown {
+    line-height: 1.5em;
+    padding: 10px 10px 10px 20px;
+}
+
+select.form-control {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    line-height: 30px;
+    height: 30px;
+}
+
+label.checkbox {
+    cursor: pointer;
+    margin-bottom: -10px;
+}
+label.checkbox input[type=checkbox] {
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+p.help-block {
+    margin: .25em 0 .5em;
+    font-size: 14px;
+    color: #888;
+}
+p.help-block a {
+    color: inherit;
+}
+
+.form-control.radio {
+    cursor: pointer;
+    line-height: 30px;
+}
+.form-control.radio input {
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+/* vendor/umonkey/ufw1/assets/table-lines.css */ table.table {
+    border-collapse: collapse;
+}
+table.table th,
+table.table td {
+    padding: 4px 10px;
+    text-align: left;
+}
+
+table.table .nowrap,
+table.table .number {
+    text-align: right;
+    white-space: nowrap;
+}
+
+table.table td.check {
+    text-align: center;
+}
+
+table.grid {
+    border-collapse: collapse;
+}
+table.grid thead th {
+    color: #444;
+    font-weight: bold;
+    font-size: 85%;
+}
+table.grid tbody td {
+    border: solid 1px #ccc;
+}
+
+
+table.compact {
+    font-size: 15px;
+}
+
+
+table.lines thead th,
+table.lines tbody td {
+    border-bottom: 1px solid #eee;
+    font-weight: normal;
+}
+table.lines thead th {
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+table.mono tbody td {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+
+table.hover tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* vendor/umonkey/ufw1/assets/wiki-editor.css */ /**
+ * Wiki page editor.
+ **/
+
+.wiki_edit > main {
+    border: none;
+}
+.wiki_edit > main > .container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+.wikiedit .toolbar {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ccc;
+    padding: 5px 10px;
+}
+
+.wikiedit .toolbar .btn {
+    background-color: transparent;
+    color: #ccc;
+    border: none;
+    outline: none;
+}
+.wikiedit .toolbar .btn:hover,
+.wikiedit .toolbar .btn.active {
+    background-color: #000;
+}
+
+.wikiedit > .editor {
+    height: calc(100vh - 40px);
+    display: flex;
+}
+
+.wikiedit aside {
+    max-width: 500px;
+}
+.wikiedit .files {
+    width: 300px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.wikiedit .search {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    min-height: 30px;
+}
+.wikiedit .search > * {
+    border: none;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: top;
+}
+.wikiedit .fsearch {
+    width: calc(100% - 40px);
+    padding: 0 10px;
+}
+.wikiedit label.upload {
+    width: 40px;
+    text-align: center;
+}
+
+.wiki_edit .tiles {
+    flex-grow: 1;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.wiki_edit .tiles .wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+}
+.wiki_edit .tiles a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    box-shadow: none;
+}
+.wiki_edit .tiles img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.wiki_edit textarea.wiki {
+    border: none;
+    margin: 0;
+    height: 100%;
+}
+
+.wiki_edit .fileinfo {
+    width: 300px;
+    padding: 10px;
+}
+.wiki_edit .fileinfo img {
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+/* vendor/umonkey/ufw1/assets/wiki-figure.css */ figure {
+    margin: 20px 0 40px;
+    padding: 0;
+    max-width: 100%;
+}
+figure > a {
+    display: inline-block;
+    line-height: 0;
+}
+
+figcaption {
+    margin: 10px 0 0;
+    color: #888;
+    font-size: 14px;
+}
+
+figure picture {
+    display: block;
+    line-height: 0;
+}
+
+/* vendor/umonkey/ufw1/assets/wiki.css */ .wiki-section-edit {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
+    color: #000;
+    opacity: 0.6;
+    white-space: nowrap;
+}
+.wiki-section-edit a {
+}
+
+ul.wiki_buttons {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+ul.wiki_buttons li {
+    margin: 0 5px;
+    display: inline-block;
+}
+ul.wiki_buttons a {
+    padding: 0 8px;
+    height: 28px;
+    line-height: 28px;
+    vertical-align: top;
+    margin: 0;
+}
+
+
+#toc {
+    border: solid 1px #ccc;
+    margin: 10px 0;
+    padding: 0 10px 10px;
+    font-size: 14px;
+    background-color: #fff;
+    display: inline-block;
+}
+#toc h2 {
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    margin: .5em 0;
+}
+#toc ol,
+#toc ul {
+    list-style-type: decimal;
+    margin: 0;
+    padding: 0 0 0 1em;
+}
+#toc li {
+    margin: 0 0 .25em;
+}
+
+/* themes/land/css/100-layout.css */ body {
+    background-color: #fff;
+    color: #111;
+    margin: 0;
+    padding: 0;
+    font: normal 18px/1.25em 'PT Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+ul.hflex {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+ul.hflex li {
+    flex-grow: 1;
+}
+
+/* themes/land/css/150-footer.css */ /**
+ * Page footer.
+ **/
+footer {
+    color: #888;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 20px 0;
+}
+footer p {
+    margin: 5px 0;
+}
+footer a {
+    color: inherit;
+}
+
+/* themes/land/css/150-header.css */ /**
+ * Заголовок сайта.
+ **/
+header {
+    width: 100%;
+    margin: 0;
+    color: #333;
+    background-color: #fffff8;
+    z-index: 100;
+}
+header .title {
+    background-color: #fafafa;
+    padding: 32px 0 23px;
+}
+header .wrap {
+    width 100%;
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+header .title a {
+    display: inline-block;
+    line-height: 0;
+}
+header .title img {
+    width: 226px;
+    height: 80px;
+}
+header .bars {
+    display: none;
+}
+
+
+/**
+ * Меню с навигацией.
+ **/
+header .menu {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+header .menu ul {
+    list-style-type: none;
+    padding: 15px 0;
+    line-height: 40px;
+    width: 100%;
+    font-size: 16px;
+}
+header .menu li {
+    display: inline-block;
+    margin-right: 30px;
+}
+header .menu a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+    color: inherit;
+}
+header .menu .active a {
+    color: #888;
+}
+
+
+@media (max-width: 800px) {
+    header, header > div {
+        height: 50px;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 50px;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    header .title {
+        padding: 0;
+        background-color: transparent;
+    }
+    header .title .wrap {
+        line-height: 0;
+    }
+    header .title img {
+        width: 141px;
+        height: 50px;
+    }
+    header .menu {
+        flex-grow: 1;
+        text-align: right;
+        border: none;
+    }
+    header .menu ul {
+        padding: 0;
+        line-height: inherit;
+    }
+    header .bars {
+        display: none;
+    }
+    .page-header h1 {
+        padding-top: 10px !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+    header {
+        height: auto;
+    }
+    header .menu {
+        display: none;
+        border-top: 1px solid #eee;
+        margin-top: 5px;
+        text-align: center;
+    }
+    header .bars {
+        display: block;
+        flex-grow: 1;
+        text-align: right;
+        min-width: calc(100vw - 175px);
+    }
+    header .bars a {
+        display: inline-block;
+        padding: 0 10px;
+        color: inherit;
+        outline: none;
+    }
+    header .menu li {
+        margin: 0 10px;
+    }
+}
+
+/* themes/land/css/150-main.css */ /**
+ * Main page contents.
+ **/
+main {
+    background-color: #fff;
+    line-height: 1.5em;
+    border-top: 1px solid #fff;
+}
+
+
+/**
+ * Contents header.
+ **/
+.page-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.page-header h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    padding-top: 40px;
+}
+.page-header .lead {
+    font-size: 125%;
+    line-height: 150%;
+    margin: 20px 0 0;
+}
+
+/* themes/land/css/500-admin-bar.css */ #admin_bar {
+    line-height: 30px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ccc;
+    font-size: 14px;
+    display: flex;
+}
+#admin_bar .btn {
+    background-color: transparent;
+    color: #ccc;
+    border: none;
+}
+#admin_bar .btn:hover {
+    background-color: #000;
+}
+
+#admin_bar a {
+    color: #fff;
+}
+#admin_bar .left {
+    flex-grow: 1;
+}
+
+.monkey {
+    display: inline-block;
+    width: 36px;
+    height: 30px;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAYAAABE4bxTAAACiklEQVRYw8WXP2gUQRTG38ZIktM+Ek9y1akREywsgniXgAo2AS20sRCFFIqN2IjYSMA/nQpqDAkW/gVF0CIRjZoiIFiJGEFE4j8kBvFQIxoxP5s5fffYvdvb3TMfLMx88+Z7HztvZnc8iQBgqYjsEJG8iKwUkYyIICKTIjIhIqMictnzvCmpJYBlwEVgjnAYBFpqZWYrUKB6FIAtUZOuBi4Ar53YV2AUOE183AWmXfszMALsBLwgM4eYH0wA7dbMYeYXhb+mgA4z+BToARYDV2qQ/DywFjgBfFP8C6BOgKvGzCJntBmYDRB9DPS7uvCrlQEX44dZoNnlyJsdu1eAKUVsVsu430dsDFhhlrsLeOQMdJmxNuChj85BFXNc8Q/EBC5QgXfM2HWgPsLOrQeuGa2banyVHrCG0irwreLfAU0xzrAm4L3Se2PGSww9Uf0+vyBgTwIH676SxP/4rKLnBDigiO/FOjKGMkrgpOPOlUk+4GJOKS4TYOiYou8LkAImjYF7pu/5vt5gQ36JPcsD64Cfiu4tBi93dRKEViXc77izZQydsTFAq9E8CvxS/VfAQi2SBm4FGEqihnZVOKk7giamgV7ghvnepGKYSTkNP7wE1oQRaQFm1MShGIYGjYlPwDCwu2SZQgj1GaHbEczYz8uRuGs/EmZnhdlxwHASf4qNCRpqrBRfVynA87wfJkFDFWYaymlFMuQwrdqdVbygnGp/DDMhrKEx1d5WhaHtARqx62iDqYV8iDmdZk5P0tcgfbB9AHJlYnMupojngbeLGIba3bVIYwjYBCxxT7fjNGaAtlpdFrvdL0pYfAHW1/o6nQXGQ5gZB7Lyv+CW6pL7l/rtbg/PHLcxqu4fm0NfgiyCT0IAAAAASUVORK5CYII=) no-repeat 50% 50%;
+    background-size: cover;
+    vertical-align: bottom;
+    margin: 0 10px 0 0;
+}
+
+/* themes/land/css/500-admin-files.css */ .fileTiles {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+}
+.fileTiles a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    line-height: 0;
+}
+.fileTiles img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* themes/land/css/500-admin-rewrite.css */ form.search.rewrite {
+    margin-bottom: 50px;
+}
+
+table.rewrite td:nth-child(1) {
+    width: 100%;
+}
+table.rewrite td:nth-child(2) {
+    width: 400px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* themes/land/css/500-contents.css */ /**
+ * Ссылки в страницах.
+ **/
+article a {
+    box-shadow: #b4e7f8 0 -4px 0 0 inset;
+    text-decoration: none;
+    color: inherit;
+}
+article a:hover {
+    background-color: #b4e7f8;
+    color: #333;
+}
+
+
+/**
+ * Битые ссылки в вики -- красные.
+ **/
+article a.broken {
+    box-shadow: #800 0 -4px 0 0 inset;
+}
+article a.broken:hover {
+    background-color: #800;
+    color: #fff;
+}
+
+article a.btn {
+    box-shadow: none;
+}
+article p {
+    margin: 10px 0 20px;
+}
+article hr {
+    border: 0;
+    width: 100%;
+    height: 16px;
+    background: transparent url('/images/hr.png') no-repeat 50% 50%;
+    clear: both;
+}
+
+article h2 {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+article .meta {
+    color: #888;
+}
+
+.photoalbum {
+    line-height: 0;
+}
+.photoalbum a.image {
+    margin: 0 1px 1px 0;
+}
+a.image,
+figure > a {
+    box-shadow: none;
+    display: inline-block;
+    line-height: 0;
+}
+a.image:hover,
+figure > a:hover {
+    background-color: inherit;
+    color: inherit;
+}
+
+/* themes/land/css/500-search.css */ form.search {
+    display: flex;
+    gap: 5px;
+}
+form.search input {
+    flex-grow: 1;
+}
+
+.result {
+    margin: 20px 0;
+}
+.result p {
+    margin: 0 0 5px;
+}
+.result .meta {
+    font-size: 16px;
+}
+
+/* themes/land/css/600-admin.css */ .form-group .edit-buttons {
+    margin: 5px 0 0;
+}
+
+table.table .rowid {
+    text-align: right;
+    color: #888;
+}
+
+table.hover tr:hover {
+    background-color: #eee;
+}
+
+.fg-source:fullscreen {
+    background-color: #fff;
+    padding: 10px;
+}
+.fg-source:fullscreen label {
+    display: none;
+}
+.fg-source:fullscreen textarea {
+    height: calc(100vh - 80px);
+}
+
+.edit-buttons .btn {
+    margin-right: 5px;
+}
+
+.dashboard-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-column-gap: 10px;
+    grid-row-gap: 50px;
+}
+.dashboard-blocks h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+.dashboard-blocks > .block {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+table.small td {
+    font-size: 14px;
+}
+
+.admin-first {
+    margin-bottom: 20px;
+}
+
+/* themes/land/css/600-blog.css */ a.youtube {
+    display: inline-block;
+    line-height: 0;
+    box-shadow: none;
+    background-color: inherit;
+}
+a.right {
+    float: right;
+    margin: 0 0 10px 20px;
+}
+
+table.blog td:nth-child(1) {
+    padding-right: 20px;
+}
+
+p.lastentry {
+    font-style: italic;
+}
+
+/* themes/land/css/600-chat-helper.css */ /**
+ * VK community chat widget, light version.
+ *
+ * Instead of loading the whole thing, with multiple scripts and events,
+ * we display this static icon and load the widget on click.
+ **/
+
+#vk_community_messages {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+#vk_community_messages a {
+    text-decoration: none;
+}
+#vk_community_messages span {
+    background-color: rgba(46, 48, 51, 0.9);
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0 12px;
+    vertical-align: middle;
+    margin: 0 8px 0 0;
+}
+#vk_community_messages i {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #5f82a6;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABK0lEQVR4Ae3VJVBtQRzH8ef+cHe3BJVK7+3ScO0UrDe0U2+l4S4Jd3d3h2/YnVnkustv5nP8/I/u7idvnDPPz8+RqMcA9nAn5gNie6S5hf+hBpfQl0vU4J+pdz0HUzKHSHF+BKJ1Ff+GMZiTMXH+dyygFf/eXqAAliRf1KkU6+MIVy/QB0vSJ+pkq9vwWV7gBJbkRNQJhJpceYF9K13gH9S0ywt0WukVZUDNtryAxkofuQxq9uUFvmLUwt/0CyahplP9k0IwY0FDK8LbaN62B1804smUroJ5Dq6hZhRfdbXsVcjc4V5XZ8dyodivZgbBuoqnQ+YcSTqOy0Qb1DyhEb76Oj0t9sTJ6R/s/40qzONWkNkwplf9amIXH4UDyGTZYoCKRTMWof3kVnkBUG6Njf3a3hoAAAAASUVORK5CYII=);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+/* themes/land/css/600-dialogs.css */ #block {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .75);
+
+    z-index: 1000;
+}
+
+.dialog {
+    position: fixed;
+    background-color: #ccc;
+    border: 2px solid #fff;
+
+    width: 500px;
+    height: auto;
+    top: 50px;
+
+    left: 50%;
+    margin-left: -267px;
+
+    padding: 15px;
+
+    z-index: 1010;
+}
+.dialog .form-group:first-child {
+    margin-top: 0;
+}
+.dialog .form-group:last-child {
+    margin-bottom: 0;
+}
+.dialog .form-actions {
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid #bbb;
+}
+.dialog .btn {
+    background-color: #bbb;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
+.dialog .btn:hover {
+    background-color: #aaa;
+}
+.dialog input[type=file] {
+    background-color: inherit;
+    padding: 0;
+}
+
+/* themes/land/css/600-disqus.css */ #disqus_thread {
+    margin-top: 50px;
+}
+
+/* themes/land/css/600-figure.css */ figure img {
+    max-width: 100%;
+}
+
+/* themes/land/css/600-home.css */ #splash {
+    position: relative;
+}
+#splash picture {
+    display: block;
+    line-height: 0;
+}
+#splash img {
+    width: 100%;
+    height: 100vh;
+    max-height: 750px;
+    object-fit: cover;
+}
+#splash.top img {
+    object-position: center top;
+}
+
+.home header,
+.with-splash header {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.home header .title,
+.with-splash header .title {
+    background-color: transparent;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 1);
+    }
+    100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+}
+
+#splash a.scrolldown {
+    position: absolute;
+    left: calc(50% - 60px);
+    bottom: 10px;
+    color: #fff;
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    outline: none;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #000;
+    animation: shadow-pulse 1s infinite;
+}
+
+#factoids {
+    background-color: #0677b8;
+    color: #fff;
+    padding: 16px 0;
+}
+#factoids li {
+    text-align: center;
+    padding: 16px;
+    width: 33.33%;
+}
+#factoids strong {
+    display: block;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 15px;
+}
+#factoids a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.hometiles .row {
+    display: flex;
+    margin: 50px 0;
+    align-items: center;  /* вертикальное центрирование */
+}
+.hometiles .picture {
+    flex: 0 0 auto;
+    width: 60%;
+    display: block;
+    line-height: 0;
+}
+.hometiles .text {
+    flex: 0 0 auto;
+    width: 40%;
+}
+.hometiles img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.hometiles .text {
+    padding: 20px;
+    box-sizing: border-box;
+}
+.hometiles .row:nth-child(even) .picture {
+    order: 2;
+}
+.hometiles h2 {
+    font-size: 1em;
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .hometiles .row {
+        display: block;
+    }
+    .hometiles .text {
+        width: 100%;
+    }
+    .hometiles .picture {
+        width: 100%;
+    }
+}
+
+/* themes/land/css/600-maps.css */ div.map {
+    height: 500px;
+    background-color: #ddd;
+}
+div.map a {
+    box-shadow: none;
+}
+
+/* themes/land/css/600-photoalbum.css */ /**
+ * Display photo albums using grid layout.
+ **/
+
+.photoalbum {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    margin: 50px 0;
+}
+
+/**
+ * Force figure to be square.
+ **/
+.photoalbum figure {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    margin: 0;
+}
+
+.photoalbum img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* themes/land/css/600-subscribe.css */ /**
+ * Форма подписки на новости.
+ **/
+.subscribe {
+    margin: 50px 0;
+    background-color: #ebedf2;
+    font-size: 16px;
+}
+.subscribe > .container {
+    padding: 20px 10px;
+    display: flex;
+    gap: 20px;
+}
+.subscribe .text {
+    flex-grow: 3;
+    flex-basis: 0;
+}
+.subscribe form {
+    flex-grow: 2;
+    flex-basis: 0;
+}
+
+.subscribe input {
+    width: 100%;
+    box-sizing: border-box;
+}
+.subscribe button {
+    background-color: #888;
+    color: #fff;
+    margin-top: 10px;
+}
+.subscribe button:hover {
+    background-color: #888;
+}
+.subscribe input,
+.subscribe button {
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    display: block;
+}
+
+/* themes/land/css/600-wiki-tables.css */ /**
+ * Оформление таблиц в вики-страницах.
+ **/
+.formatted table {
+    border-collapse: collapse;
+}
+.formatted table td,
+.formatted table th {
+    padding: 5px 10px;
+}
+.formatted table tbody td {
+    border: 1px solid #ccc;
+}
+.formatted table thead th {
+    color: #444;
+    font-size: 14px;
+}
+.formatted tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* themes/land/css/600-wiki.css */ .wikimeta {
+    color: #888;
+    font-size: 14px;
+}
+.wikimeta a {
+    color: inherit;
+    box-shadow: none;
+    text-decoration: underline;
+}
+.wikimeta a:hover {
+    background-color: inherit;
+    color: inherit;
+}
+
+/**
+ * Отключение ссылок на редактирование раздела.
+ **/
+.wiki-section-edit {
+    display: none;
+}
+
+.wikinav {
+    padding: 10px 0;
+    margin: 20px 0;
+}
+.wikinav > div > div {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+.wikinav .next {
+    text-align: right;
+}
+
+form.wikisource {
+    width: 100%;
+}

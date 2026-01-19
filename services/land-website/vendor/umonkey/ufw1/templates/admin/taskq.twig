@@ -1,0 +1,53 @@
+{% extends "layouts/base.twig" %}
+
+{% block page_title %}taskq{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+        <h1>Очередь фоновых задач</h1>
+    </div>
+{% endblock %}
+
+{% block page_contents %}
+    {% include 'parts/admin-breadcrumbs.twig' with {'path': [{
+        'label': 'Очередь задач',
+        'link': '/admin/taskq',
+    }]} %}
+
+    <p class='lead'>Фоновые задачи выполняются после выдачи ответа пользователю, чтобы не заставлять его ждать.&nbsp; Это отправка почты, изменение размеров картинок и прочие длительные операции.</p>
+
+    <h2>Действия</h2>
+    <p><a class='btn btn-defaul' href='{{ settings.server }}/ping.php?url={{ request.base }}/taskq/list&amp;back={{ request.uri }}'>Послать пинг</a> <a class='btn btn-default' href='{{ settings.server }}/index.php?action=recent' target='_blank'>Монитор</a></p>
+
+    <h2>Состояние очереди</h2>
+    {% if tasks %}
+        <p>Есть невыполненные фоновые задачи.</p>
+
+        <table class="table grid taskq">
+            <thead>
+                <tr>
+                    <th class='rowid'>#</th>
+                    <th>age</th>
+                    <th>action</th>
+                    <th class="number">attempts</th>
+                    <th class="number">pri</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tasks %}
+                    <tr>
+                        <td class="rowid"><a href='/admin/taskq/{{ t.id }}'>{{ t.id }}</a></td>
+                        <td class="number">{{ t.age }}</td>
+                        <td>{{ t.action }}</td>
+                        <td class="number">{{ t.attempts  }}</td>
+                        <td class="number">{{ t.priority }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет невыполненных задач, таблица <code>taskq</code> пуста, всё хорошо.</p>
+    {% endif %}
+
+    <p><a href='/admin'>Вернуться назад</a></p>
+{% endblock %}

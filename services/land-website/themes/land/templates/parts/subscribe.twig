@@ -1,0 +1,19 @@
+{##
+ # Форма подписки на новости.
+ ##}
+
+{% if node.section == 'blog' %}
+    </article></div>
+
+    <div class='subscribe'>
+        <div class='container'>
+            <div class='text'>Почтовая рассылка поможет следить за нашим блогом.&nbsp; В неё приходит 1-2 письма в месяц, не больше.&nbsp; Это сообщения о новых заметках в блоге и некоторая другая важная информация.</div>
+            <form action='https://tinyletter.com/umonkey' method='post' target='_blank'>
+                <input type='email' name='email' placeholder='Email для отправки новостей'/>
+                <button class='btn' type='submit'>Подписаться</button>
+            </form>
+        </div>
+    </div>
+
+    <div class='container'><article>
+{% endif %}

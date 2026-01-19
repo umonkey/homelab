@@ -1,0 +1,20 @@
+<div class='admin_files'>
+    {% for f in nodes %}
+        <div class='file'>
+            <a class='thumbnail' data-fancybox='list' data-src='{% if f.files.large.url %}{{ f.files.large.url }}{% else %}/node/{{ f.id }}/download/large{% endif %}' href='/admin/nodes/{{ f.id }}/edit'>
+                {% if f.files.small %}
+                    <img src='{% if f.files.small.url %}{{ f.files.small.url }}{% else %}/node/{{ f.id }}/download/small{% endif %}'/>
+                {% else %}
+                    <img src='/images/no-thumbnail.png'/>
+                {% endif %}
+            </a>
+            <div class='info'>
+                <div class='title'><a href='/admin/nodes/{{ f.id }}/edit?back={{ request.uri|url_encode }}'>{{ f.name }}</a></div>
+                <div class='meta'>{{ f.created|date_simple }}{% if f.width %} &middot; {{ f.width }}×{{ f.height }}{% endif %} &middot; {{ f.length|filesize }}</div>
+                <div class='links'><a href='/download/{{ f.id }}'>Скачать исходный файл</a></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<p><a href='/admin/nodes'>Показать другие документы</a></p>

@@ -1,0 +1,31 @@
+/**
+ * Display photo albums using grid layout.
+ **/
+
+.photoalbum {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    margin: 50px 0;
+}
+
+/**
+ * Force figure to be square.
+ **/
+.photoalbum figure {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    margin: 0;
+}
+
+.photoalbum img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

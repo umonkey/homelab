@@ -1,0 +1,17 @@
+form.search {
+    display: flex;
+    gap: 5px;
+}
+form.search input {
+    flex-grow: 1;
+}
+
+.result {
+    margin: 20px 0;
+}
+.result p {
+    margin: 0 0 5px;
+}
+.result .meta {
+    font-size: 16px;
+}
