@@ -14,10 +14,10 @@ git fetch origin master
 git reset --hard origin/master
 
 # Pull the pre-built images.
-docker-compose pull
+docker compose pull
 
 # Rebuild the remaining images and restart the services.
-docker-compose up -d --build --remove-orphans
+docker compose up -d --build --remove-orphans
 
 # Clean up unused images.
 docker image prune -f
