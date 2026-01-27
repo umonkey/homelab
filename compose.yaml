@@ -23,13 +23,13 @@ services:
       - turso_api_token
       - dropbox_token
 
-  website-land:
-    build:
-      context: services/land-website
-    container_name: homelab_land
-    restart: unless-stopped
-    ports:
-      - "8001:8080"
+#  website-land:
+#    build:
+#      context: services/land-website
+#    container_name: homelab_land
+#    restart: unless-stopped
+#    ports:
+#      - "8001:8080"
 
 volumes:
   mysql_data:
