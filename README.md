@@ -21,15 +21,27 @@ This whole thing runs under Docker Compose.
 Perform the following steps to set it up:
 
 1. Create a server (a droplet on Digital Ocean, etc).
-2. Create a separate user to run docker (e.g., "homelab").
+2. Create a separate user to run docker (e.g., "homelab"). Make sure it is added to the `docker` group to be able to run Docker.
 3. Pull this repository to that user's home folder.
 4. Generate an SSH key which will be used to deploy updates.
+
+
+### Requirements
+
+Make sure that `docker compose` is installed.
 
 ### Generating the SSH key
 
 Use this command to generate a pair of SSH keys.
 The public key goes to the server, `~/.ssh/authorized_keys`.
 The private key goes to GitHub, a repo secret named `SSH_PRIVATE_KEY`.
+
+```
+ssh-keygen -t ed25519 -C "github-ci" -f ./deploy_key
+```
+
+Use this command to generate another pair of SSH keys, that will be used by the server to pull updates from the repo.
+The public key goes to the "Deploy keys" section in GitHub, and the private key stays in `~/.ssh`.
 
 ```
 ssh-keygen -t ed25519 -C "github-ci" -f ./deploy_key
