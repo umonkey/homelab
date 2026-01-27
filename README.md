@@ -5,16 +5,6 @@ It is intended to require minimal setup and configuration.
 The idea is that everything runs under Docker Compose, with updates being deployed using a GitHub Actions workflow.
 
 
-## TODO
-
-- [ ] Move or drop OpenVPN
-- [ ] Move land.umonkey.net
-- [ ] Move seb-museum.ru
-- [ ] Move sebezh-gid.ru
-- [ ] Move chistoe-nebo.info
-- [ ] Move Trees of Yerevan backups
-
-
 ## Configuring the server
 
 This whole thing runs under Docker Compose.
