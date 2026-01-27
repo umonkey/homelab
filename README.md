@@ -25,6 +25,16 @@ Perform the following steps to set it up:
 3. Pull this repository to that user's home folder.
 4. Generate an SSH key which will be used to deploy updates.
 
+### Generating the SSH key
+
+Use this command to generate a pair of SSH keys.
+The public key goes to the server, `~/.ssh/authorized_keys`.
+The private key goes to GitHub, a repo secret named `SSH_PRIVATE_KEY`.
+
+```
+ssh-keygen -t ed25519 -C "github-ci" -f ./deploy_key
+```
+
 
 ## Configuration
 
