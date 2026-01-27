@@ -1,0 +1,2 @@
+# Put the cron jobs here.
+0 0 * * * cd /app; sh backup_treemap_database.sh
