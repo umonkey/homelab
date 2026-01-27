@@ -2,6 +2,8 @@
 # This script pulls the updates from the repo and deploys them.
 # This script is normally executed by a GitHub workflow, over SSH.
 
+cd `dirname $0`
+
 if [ ! -f compose.yaml ]; then
     echo "Run this script inside the repo."
     exit 1
