@@ -17,4 +17,4 @@ The idea is that everything runs under Docker Compose, with updates being deploy
 
 ## Configuration
 
-Most configuration happens via the environment, in the `docker-compose.yml` file.
+Most configuration happens via the environment, in the `compose.yaml` file.
