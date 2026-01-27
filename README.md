@@ -12,3 +12,9 @@ The idea is that everything runs under Docker Compose, with updates being deploy
 - [ ] Move seb-museum.ru
 - [ ] Move sebezh-gid.ru
 - [ ] Move chistoe-nebo.info
+- [ ] Move Trees of Yerevan backups
+
+
+## Configuration
+
+Most configuration happens via the environment, in the `docker-compose.yml` file.
