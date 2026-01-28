@@ -37,6 +37,18 @@ services:
     networks:
       - homelab
 
+  website-files:
+    build:
+      context: services/website-files
+    container_name: homelab_files
+    restart: unless-stopped
+    ports:
+      - "8002:80"
+    volumes:
+      - files_data:/app/data
+    networks:
+      - homelab
+
 #  website-land:
 #    build:
 #      context: services/land-website
@@ -51,6 +63,7 @@ networks:
 volumes:
   mysql_data:
   museum_data:
+  files_data:
 
 secrets:
   mysql_admin_password:

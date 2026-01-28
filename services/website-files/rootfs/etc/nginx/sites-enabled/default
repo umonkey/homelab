@@ -1,0 +1,9 @@
+server {
+    listen 80 default_server;
+    server_name _;
+
+    root /app/data;
+    autoindex on;
+
+    client_max_body_size 1G;
+}
