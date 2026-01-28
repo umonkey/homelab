@@ -1,0 +1,42 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{{ type.title }} — СКМ{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ type.title }}</h1>
+        {% if type.subtitle %}
+            <p class="lead">{{ type.subtitle }}</p>
+        {% endif %}
+    </div>
+
+    {% block actions %}
+        {% if type.can_add %}
+            <p>{% if type.public_list %}<a href="{{ type.public_list }}" target="_blank" class="ext">открыть раздел на сайте</a> &middot; {% endif %}{% if type.can_add %}<a href="/admin/{{ type.type }}/add">добавить</a>{% endif %}</p>
+        {% endif %}
+    {% endblock %}
+
+    {% if type.type == "file" %}
+        <p class="alert alert-warning">Внимание!  Загружать файлы сюда больше не нужно.  Теперь файлы можно загружать прямо при редактировании статьи, как показано на <a href="https://www.youtube.com/watch?v=orFD7LzO8R4" target="_blank">этом видео</a>.  Эту страницу можно использовать для удаления старых файлов, а лучше — не использовать вообще.</p>
+
+        <form method="post" class="async" action="/admin/upload" style="margin: 0 0 20px">
+            <label class="btn btn-primary">Загрузить файлы<input type="file" name="files[]" multiple="multiple" accept="image/*" class="autosubmit"/></label>
+        </form>
+    {% endif %}
+
+    {% block objects %}
+        {% if docs %}
+            {% if type.type == "file" %}
+                {% include "parts/file-list.twig" %}
+            {% else %}
+                {% include "parts/docs-list.twig" %}
+            {% endif %}
+        {% elseif type.can_add %}
+            <p>Здесь пусто.&nbsp; <a href="/admin/{{ type.type }}/add">Добавить что-нибудь</a>?</p>
+        {% else %}
+            <p>Здесь пока ничего нет.</p>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

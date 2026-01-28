@@ -1,0 +1,11 @@
+footer {
+    background-color: #dfc36d;
+    color: #000;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-top: 50px;
+}
+
+footer a {
+    color: inherit;
+}

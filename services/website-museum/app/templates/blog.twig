@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block page_title %}{{ object.title }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ object.title }}</h1>
+        {% if object.subtitle %}
+            <p class="lead">{{ object.subtitle }}</p>
+        {% endif %}
+
+        {% if object.date %}
+            <p class="date">{{ object.date_human }} &middot; <a href="/blog">другие заметки</a></p>
+        {% endif %}
+    </div>
+
+    {% if object.contents_html %}
+        {{ object.contents_html|raw }}
+    {% else %}
+        <p>Заметка не содержит текста.</p>
+    {% endif %}
+
+    {% include "parts/gallery.twig" %}
+
+    <hr/>
+
+    <p><a href="/blog">Оглавление дневника</a></p>
+{% endblock %}

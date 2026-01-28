@@ -1,0 +1,41 @@
+<table class="table table-striped doclist">
+    <tbody>
+        {% for doc in docs %}
+            <tr>
+                <td class="id">{{ doc.id }}</td>
+                {% if docs[0].small_image %}
+                    <td>
+                        {% if doc.small_image and doc.published != false %}
+                            <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">
+                                <img src="/images/300x200.png" alt="thumbnail" style="background-image: url({{ doc.small_image_parsed }})"/>
+                            </a>
+                        {% endif %}
+                    </td>
+                {% endif %}
+                <td class="wide">
+                    <div class="title">
+                        <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">{{ doc.title }}</a>
+                    </div>
+                    <ul class="doclinks">
+                        {% if type.type == "event" %}
+                            <li>{{ doc.date_human }}</li>
+                            <li>{{ doc.time_human }}</li>
+                        {% elseif docs[0].date and doc.date %}
+                            <li>{{ doc.date }}</li>
+                        {% endif %}
+                        <li>
+                            <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">изменить</a>
+                        </li>
+                        {% if doc.published == false %}
+                            <li>черновик</li>
+                        {% elseif doc.view_link %}
+                            <li>
+                                <a href="{{ doc.view_link }}" target="_blank" class="ext">открыть на сайте</a>
+                            </li>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

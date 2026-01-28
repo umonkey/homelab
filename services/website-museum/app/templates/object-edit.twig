@@ -1,0 +1,64 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Редактирование экспоната{% else %}Добавление экспоната{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Редактирование экспоната</h1>
+        {% else %}
+            <h1>Добавление экспоната</h1>
+        {% endif %}
+    </div>
+
+    <form method="post" class="async">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Название:</label>
+            <input class="form-control" type="text" name="title" required="required" autofocus="autofocus" value="{{ object.title }}"/>
+        </div>
+
+        <div class="form-group">
+            <label>Описание экспоната:</label>
+            <textarea class="form-control" name="contents" rows="10">{{ object.contents  }}</textarea>
+            {% include "parts/md-help.twig" %}
+        </div>
+
+        {% include "parts/gallery-edit.twig" %}
+
+        <hr/>
+
+        <div class="form-group">
+            <label>Подзаголовок:</label>
+            <input class="form-control" type="text" name="subtitle" value="{{ object.subtitle }}"/>
+            <p class="help-block">Дополнительный текст, описывающий экспонат в одном предложении.  Виден под заголовком.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Краткое название:</label>
+            <input class="form-control" type="text" name="short_title" value="{{ object.short_title }}"/>
+            <p class="help-block">Это название видно на главной странице.  Здесь не надо писать «экспонат» итп.</p>
+        </div>
+
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="published" value="yes"{% if object.published %} checked="checked"{% endif %}/> Опубликовать</label>
+            <label class="radio-inline"><input type="radio" name="published" value="no"{% if not object.published %} checked="checked"{% endif %}/> черновик</label>
+        </div>
+
+        <hr/>
+
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить изменения</button>
+            {% if object.id %}
+                <a href="/objects/{{ object.id }}" class="btn btn-default">Открыть на сайте</a>
+            {% endif %}
+        </div>
+
+        <p class="alert alert-info" id="msgbox" style="display: none"></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}Журнал действий{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Журнал работы с сайтом</h1>
+    </div>
+
+    <table class="table grid">
+        <thead>
+            <tr>
+                <th>Время</th>
+                <th class="wide">Событие</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in entries %}
+                <tr>
+                    <td class="nowrap">{{ e.timestamp|strftime("%d.%m, %H:%M") }}</td>
+                    <td>{{ e.message|raw }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="doclists">
+        {% for type in documents %}
+            <div class="doclist">
+                <h2>{{ type.title }}</h2>
+                {% if type.docs %}
+                    <div class="links"><a href="/admin/{{ type.type }}">полный список</a>{% if type.public_list %} &middot; <a href="{{ type.public_list }}" target="_blank" class="ext">на сайте</a>{% endif %} &middot; <a href="/admin/{{ type.type }}/add">добавить</a></div>
+                    <ul>
+                        {% for doc in type.docs %}
+                            <li>
+                                <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">{{ doc.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% elseif type.error %}
+                    <p>{{ type.error }}</p>
+                {% else %}
+                    <div class="links"><a href="/admin/{{ type.type }}">полный список</a>{% if type.public_list %} &middot; <a href="{{ type.public_list }}" target="_blank" class="ext">на сайте</a>{% endif %} &middot; <a href="/admin/{{ type.type }}/add">добавить</a></div>
+                    <p>Нет документов этого типа.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

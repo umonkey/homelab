@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Фотоархив — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Фотография недоступна</h1>
+    </div>
+
+    <p>Извините, эту фотографию увидеть невозможно: она ещё не прошла одобрение модератора.</p>
+
+    <p><a href="/photo">Вернуться ко списку фотографий</a></p>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Экспонаты — {{ site_name }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Экспонаты себежского музея</h1>
+        <p class="lead">Археологические находки, памятные издания и другие предметы, связанные с Себежским районом и его жителями.</p>
+
+        {% if is_admin %}
+            <p><a class="btn btn-primary" href="/admin/object/add?back=/objects">Добавить экспонат</a></p>
+        {% endif %}
+    </div>
+
+    <p>На сайте представлена лишь небольшая часть экспонатов.&nbsp; Сотрудники музея постоянно работают над их оцифровкой и описанием.  Представленные здесь и все остальные экспонаты вы можете увидеть своими глазами в самом музее.&nbsp;  Экскурсовод расскажет вам всё, что известно об этих экспонатах.</p>
+
+    {% include "parts/about-short.twig" %}
+
+    <div class="tiles">
+        {% for object in objects %}
+            {% include "parts/object-tile.twig" %}
+        {% else %}
+            <p>Ни один экспонат пока не описан.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

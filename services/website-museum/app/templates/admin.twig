@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block body_class %}admin{% endblock %}
+
+{% block brand %}СКМ редактор{% endblock %}
+
+{% block container %}
+    {% block splash %}{% endblock %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 admnav">
+                <ul class="sidenav">
+                    {% for item in admin_nav %}
+                        <li{% if item.active %} class="active"{% endif %}>
+                            <a href="{{ item.link }}">{{ item.label }}</a>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <a href="/admin/log">Журнал</a>
+                    </li>
+                    <li style="margin-top: 20px">
+                        <a href="https://metrika.yandex.ru/stat/traffic?id=44977603" target="_blank">Статистика</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-10">
+                {% block banner %}
+                    {% if banner %}
+                        <p class="alert alert-info">{{ banner|raw }}</p>
+                    {% endif %}
+                {% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

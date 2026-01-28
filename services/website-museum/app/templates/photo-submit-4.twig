@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Добавление фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Пополнение коллекции старых фотографий</h1>
+        <p class="lead">Шаг 4: привязка к карте.</p>
+    </div>
+
+    <form method="post" class="async">
+        <input type="hidden" name="step" value="4"/>
+        <input type="hidden" name="lat" value="" id="latctl"/>
+        <input type="hidden" name="lng" value="" id="lngctl"/>
+
+        <div id="place_editor" class="map dragable" data-center="56.27740751089426, 28.484826698302722" data-for-lat="#latctl" data-for-lon="#lngctl" style="margin-bottom: 20px"></div>
+
+        <div class="form-group">
+            <label class="checkbox-inline"><input type="checkbox" name="nolatlng" value="yes"/> я не знаю где это</label>
+        </div>
+
+        <div class="form-group actions">
+            <button class="btn btn-primary">Продолжить</button>
+        </div>
+    </form>
+{% endblock %}

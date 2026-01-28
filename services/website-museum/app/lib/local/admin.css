@@ -1,0 +1,174 @@
+#msgbox {
+    margin-top: 20px;
+    white-space: pre-wrap;
+}
+
+div.doclist .links {
+    margin: .5em 0;
+}
+
+td.nowrap {
+    white-space: nowrap;
+}
+td.wide {
+    width: 100%;
+}
+
+ul.doclinks {
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+ul.doclinks li {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+table.doclist {
+    width: 100%;
+    margin-top: 20px;
+}
+table.doclist .title a {
+    font-size: 18px;
+    color: inherit;
+}
+table.doclist .id,
+table.doclist .title {
+    line-height: 20px;
+}
+table.doclist img {
+    width: 100px;
+    max-width: 100px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.breadcrumb {
+    padding: 0;
+    background-color: transparent;
+    color: #aaa;
+    font-size: 14px;
+}
+.breadcrumb a {
+    color: inherit;
+}
+
+.actions .btn {
+    margin-right: 10px;
+}
+
+.files .file {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    vertical-align: top;
+
+    margin: 0 1px 1px 0;
+}
+.files a.tile {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding: 0;
+    border: none;
+
+    font-size: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+}
+
+.splash-row {
+    margin-bottom: 20px;
+}
+.splash-title {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.photoeditor .picture {
+    margin: 10px 0;
+}
+
+
+/**
+ * Боковая навигация в админке.
+ **/
+.admnav ul {
+    list-style-type: none;
+    margin: 0 0 0 -5px;
+    padding: 0;
+}
+.admnav li {
+    margin: 0 0 2px;
+    padding: 2px 0 0 7px;
+}
+.admnav li.active {
+    background-color: #eee;
+}
+
+
+.admphotos .item {
+    display: inline-block;
+    width: 200px;
+    margin: 0 10px 10px 0;
+    position: relative;
+    background-color: #eee;
+    border-radius: 3px;
+}
+.admphotos .item .img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 3px;
+}
+.admphotos .actions {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.admphotos .actions a {
+    color: #fff;
+    display: inline-block;
+    width: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.admin .nav-pills,
+.admin .nav-tabs {
+    margin: 0 0 20px;
+}
+.admin .nav-pills li {
+    margin-right: 10px;
+}
+
+
+/**
+ * На широких экранах выводим в две колонки.
+ **/
+@media (min-width: 1000px) {
+    .doclists {
+        column-count: 2;
+    }
+    .doclists .doclist {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+    }
+
+    .doclist ul {
+        margin-right: 20px;
+    }
+}

@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Места — {{ site_name }}{% endblock %}
+
+{% block container %}
+    {#
+    <div class="page-header">
+        <h1>Интересные места</h1>
+        <p class="lead">Здесь собрана информация об интересных местах Себежского района, ведь без этого краеведение будет неполным.</p>
+    </div>
+    #}
+
+    <script type="text/javascript">var map_data = {{ map_data|raw }};</script>
+
+    <div id="places_map" class="map" data-var="map_data">Загружаю карту...</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

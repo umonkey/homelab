@@ -1,0 +1,25 @@
+{% extends "admin-docs.twig" %}
+
+{% block objects %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item active"><a href="#" data-filter="published">Опубликованные</a></li>
+        <li class="nav-item"><a href="#" data-filter="draft">На модерации <span class="badge" id="chid">5</span></a></li>
+        <li class="nav-item"><a href="/photo/submit">Добавить</a></li>
+    </ul>
+
+    <div class="admphotos">
+        {% for doc in docs %}
+            <div class="item {% if doc.published %}published{% else %}draft{% endif %}" {% if not doc.published %} style="display: none"{% endif %}>
+                <a class="img" style="background-image: url({{ doc.images.old.s.link }})" href="/admin/photo/{{ doc.id }}/edit?back=/admin/photo"></a>
+                <div class="actions">
+                    <a href="/admin/photo/{{ doc.id }}/edit?back=/admin/photo" title="Отредактировать">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <a class="delete" href="/admin/photo/{{ doc.id }}/delete" title="Убрать с сайта">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

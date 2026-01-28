@@ -1,0 +1,100 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Редактирование фотографии{% else %}Добавление фотографию{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Редактирование фотографии</h1>
+        {% else %}
+            <h1>Добавление фротографии</h1>
+            {% if type.edit_subtitle %}
+                <p class="lead">{{ type.edit_subtitle }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <form method="post" class="async photoeditor">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Название фотографии:</label>
+            <input class="form-control" type="text" name="title" required="required" autofocus="autofocus" value="{{ object.title }}"/>
+            <p class="help-block">Хорошо: «Вид на замковую гору», плохо: «Фото старого Себежа».</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Старая фотография:</label>
+                    <div class="controls">
+                        {% if object.images.old %}
+                            <div class="picture">
+                                <a href="/admin/photo/{{ object.id }}/old/edit?back={{ args.get.back }}">
+                                    <img src="{{ object.images.old.s.link }}"/>
+                                </a>
+                            </div>
+                            <label class="btn btn-default">Выбрать другую<input type="file" name="old" style="display:none"/></label>
+                        {% else %}
+                            <label class="btn btn-default">Выбрать фотографию<input type="file" name="old" style="display:none"/></label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Современный вид:</label>
+                    <div class="controls">
+                        {% if object.images.new %}
+                            <div class="picture">
+                                <a href="{{ object.images.new.o.link }}" target="_blank">
+                                    <img src="{{ object.images.new.s.link }}"/>
+                                </a>
+                            </div>
+                            <label class="btn btn-default">Выбрать другую<input type="file" name="new" style="display:none"/></label>
+                        {% else %}
+                            <label class="btn btn-default">Выбрать фотографию<input type="file" name="new" style="display:none"/></label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Описание:</label>
+            <textarea class="form-control" name="description" rows="10">{{ object.description }}</textarea>
+            <p class="help-block">Опиши как можно подробнее основной объект, изображённый на фотографии.  Если есть информация об авторе и дате снимка&nbsp;— обязательно укажи.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Положение на карте:</label>
+
+            <input id="latctl" type="hidden" name="lat" value="{{ object.lat }}"/>
+            <input id="lngctl" type="hidden" name="lng" value="{{ object.lng }}"/>
+
+            <div id="place_editor" class="map dragable" data-center="{% if object.lat and object.lng %}{{ object.lat }}, {{ object.lng }}{% else %}56.27740751089426, 28.484826698302722{% endif %}" data-for-lat="#latctl" data-for-lon="#lngctl"></div>
+            <p class="help-block">Перетащите метку для изменения адреса объекта.</p>
+        </div>
+
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="published" value="yes"{% if object.published %} checked="checked"{% endif %}/> Доступно на сайте</label>
+            <label class="radio-inline"><input type="radio" name="published" value="no"{% if not object.published %} checked="checked"{% endif %}/> Черновик</label>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить изменения</button>
+            {% if object.id %}
+                <a href="/photo/{{ object.id }}" class="btn btn-default">Открыть на сайте</a>
+            {% endif %}
+        </div>
+
+        <div class="progressbar" style="display:none"><div class="done"></div></div>
+
+        <p class="alert alert-info" id="msgbox" style="display: none"></p>
+    </form>
+{% endblock %}

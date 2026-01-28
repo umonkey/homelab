@@ -1,0 +1,38 @@
+{% extends "admin-docs.twig" %}
+
+{% block objects %}
+    <table class="table table-striped doclist">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Название экскурсии</th>
+                <th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in docs %}
+                <tr>
+                    <td class="id">{{ doc.order }}</td>
+                    <td class="wide">
+                        <div class="title">
+                            <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">{{ doc.title }}</a>
+                        </div>
+                        <ul class="doclinks">
+                            <li>
+                                <a href="/admin/{{ type.type }}/{{ doc.id }}/edit">изменить</a>
+                            </li>
+                            {% if doc.published == false %}
+                                <li>черновик</li>
+                            {% elseif doc.view_link %}
+                                <li>
+                                    <a href="{{ doc.view_link }}" target="_blank" class="ext">открыть на сайте</a>
+                                </li>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>{{ doc.duration }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

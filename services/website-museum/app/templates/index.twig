@@ -1,0 +1,126 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% if splash %}
+        <div class="splashes">
+            <ul>
+                {% for item in splash %}
+                    <li>
+                        <a href="{{ item.link }}" style="background-image: url({% if item.image %}{{ item.image }}{% else %}{{ item.gallery_images[0].large }}{% endif %})">
+                            {% if item.title %}
+                                <span class="title">{{ item.title }}</span>
+                            {% endif %}
+                            {% if item.description %}
+                                <span class="description">{{ item.description }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if exhibitions %}
+        <h2>Последние <a href="/exhibitions">выставки</a></h2>
+        <div class="tiles">
+            {% for object in exhibitions %}
+                {% include "parts/exhibition-tile.twig" %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if pending_events or past_events %}
+        {# UGLY HACK #}
+        </div><div class="event_strip"><div class="container">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Предстоящие события</h2>
+                {% if pending_events %}
+                    <ul>
+                        {% for event in pending_events %}
+                            <li>
+                                <a href="/events/{{ event.id }}">{{ event.date_human }}, {{ event.time_human }} — {{ event.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Нет предстоящих событий.</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6">
+                <h2>Прошедшие события</h2>
+                {% if past_events %}
+                    <ul>
+                        {% for event in past_events %}
+                            <li>
+                                <a href="/events/{{ event.id }}">{{ event.date_human }}, {{ event.time_human }} — {{ event.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Нет информации о прошедших событиях.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        </div></div><div class="container">{# UGLY HACK #}
+    {% endif %}
+
+    {% if objects %}
+        <h2><a href="/objects">Экспонаты</a></h2>
+        <div class="tiles">
+            {% for object in objects %}
+                {% include "parts/object-tile.twig" %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div id="comein" class="row">
+        <div class="col-sm-4">
+          <h2>Как посетить музей</h2>
+          <p>Музей расположен почти в центре Себежа — в доме 21 на Пролетарской улице.</p>
+          {% if today >= "0601" and today < "0901" %}
+              <p>Режим работы с сентября по май:</p>
+              <table class="workhours">
+                <tbody>
+                 <tr>
+                    <td>пн-пт</td>
+                    <td>9:00—18:00</td>
+                 </tr>
+                 <tr>
+                    <td>сб-вс</td>
+                    <td>выходной</td>
+                 </tr>
+                </tbody>
+              </table>
+            {% else %}
+              <p>Режим работы с июня по август:</p>
+              <table class="workhours">
+                <tbody>
+                 <tr>
+                    <td>пн</td>
+                    <td>выходной</td>
+                 </tr>
+                 <tr>
+                    <td>вт-пт</td>
+                    <td>9:00—18:00</td>
+                 </tr>
+                 <tr>
+                    <td>сб-вс</td>
+                    <td>10:00—15:00</td>
+                 </tr>
+                </tbody>
+              </table>
+            {% endif %}
+        </div>
+        <div class="col-sm-4">
+          <img src="https://files.umonkey.net/f/0e/3de1/2a6957/md.jpg" alt="здание себежского музея"/>
+        </div>
+        <div class="col-sm-4">
+          <div id="homemap" class="map" data-zoom="14" data-center="56.277226950037544, 28.49201202392578">Загружаю карту…</div>
+        </div>
+    </div>
+
+    {% include "parts/gov-widget.twig" %}
+{% endblock %}

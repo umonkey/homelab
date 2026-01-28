@@ -1,0 +1,21 @@
+{% extends "admin.twig" %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Редактирование фотографии</h1>
+    </div>
+
+    <div class="photo" style="margin: 0 0 20px 0">
+        <img class="cropme" src="{{ image.link }}" data-width="{{ image.width }}" data-height="{{ image.height }}" data-storage="#crop_data"/>
+    </div>
+
+    <form method="post" class="async">
+        <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        <input id="crop_data" type="hidden" name="crop_data" value="{{ image.crop }}"/>
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить</button>
+        </div>
+    </form>
+{% endblock %}

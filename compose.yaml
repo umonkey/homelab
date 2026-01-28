@@ -13,6 +13,8 @@ services:
       - mysql_data:/var/lib/mysql
     secrets:
       - mysql_admin_password
+    networks:
+      - homelab
 
   cron:
     build:
@@ -23,6 +25,18 @@ services:
       - turso_api_token
       - dropbox_token
 
+  website-museum:
+    build:
+      context: services/website-museum
+    container_name: homelab_museum
+    restart: unless-stopped
+    ports:
+      - "8001:80"
+    volumes:
+      - museum_data:/app/data
+    networks:
+      - homelab
+
 #  website-land:
 #    build:
 #      context: services/land-website
@@ -31,8 +45,12 @@ services:
 #    ports:
 #      - "8001:8080"
 
+networks:
+  homelab:
+
 volumes:
   mysql_data:
+  museum_data:
 
 secrets:
   mysql_admin_password:

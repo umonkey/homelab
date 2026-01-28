@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Публикация фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Публикация фотографии</h1>
+    </div>
+
+    {% if photo.vk_id %}
+        <p class="alert alert-info">Внимание! Эта фотография <a href="https://vk.com/{{ photo.vk_id }}" target="_blank">уже загружена</a>.</p>
+    {% endif %}
+
+    <form method="post" class="async wait">
+        <div style="margin-bottom: 20px">
+            <a href="/photo/{{ photo.id }}">
+                <img src="{{ photo.images.old.s.link }}"/>
+            </a>
+        </div>
+
+        <div class="form-group">
+            <label>Выбери альбом:</label>
+            <select class="form-control" name="album">
+                {% for a in albums %}
+                    <option value="{{ a.id }}">{{ a.label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary">Загрузить</button>
+            <a href="#" class="btn btn-default" target="_blank" id="vk_link" style="display: none">Открыть страницу с фотографией</a>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Редактирование записи в дневнике{% else %}Добавление записи в дневник{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Редактирование записи в дневнике</h1>
+        {% else %}
+            <h1>Добавление записи в дневник</h1>
+        {% endif %}
+    </div>
+
+    <form method="post" class="async">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Заголовок:</label>
+            <input class="form-control" type="text" name="title" required="required" autofocus="autofocus" value="{{ object.title }}"/>
+            <p class="help-block">Пример: «Съездили в Верхнедвинск, познакомились с сотрудниками тамошнего музея»</p>
+        </div>
+
+        <div class="form-group">
+            <label>Текст заметки:</label>
+            <textarea class="form-control" name="contents" rows="10">{{ object.contents  }}</textarea>
+            {% include "parts/md-help.twig" %}
+        </div>
+
+        {% include "parts/gallery-edit.twig" %}
+
+        <hr/>
+
+        {% if object.id %}
+        <div class="form-group">
+            <label>Дата публикации:</label>
+            <input class="form-control" type="date" name="date" value="{{ object.date }}" placeholder="ГГГГ-ММ-ДД ЧЧ:ММ:СС"/>
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="published" value="yes"{% if object.published or not object.id %} checked="checked"{% endif %}/> Опубликовать</label>
+            <label class="radio-inline"><input type="radio" name="published" value="no"{% if object.id and not object.published %} checked="checked"{% endif %}/> черновик</label>
+        </div>
+
+        <hr/>
+
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить изменения</button>
+            {% if object.id %}
+                <a href="/blog/{{ object.id }}" class="btn btn-default">Открыть на сайте</a>
+            {% endif %}
+        </div>
+
+        <p class="alert alert-info" id="msgbox" style="display: none"></p>
+    </form>
+{% endblock %}

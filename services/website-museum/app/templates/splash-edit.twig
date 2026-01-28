@@ -1,0 +1,54 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Редактирование заставки{% else %}Добавление заставки{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Редактирование заставки</h1>
+        {% else %}
+            <h1>Добавление заставки</h1>
+        {% endif %}
+        <p class="lead">Заставка видна в самом начале главной страницы и привлекает внимание к самому главному текущему событию в музее.</p>
+    </div>
+
+    <form method="post" class="async">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Заголовок:</label>
+            <input class="form-control" type="text" name="title" required="required" autofocus="autofocus" value="{{ object.title }}"/>
+        </div>
+
+        <div class="form-group">
+            <label>Описание:</label>
+            <textarea class="form-control" name="description" rows="10">{{ object.description }}</textarea>
+            {% include "parts/md-help.twig" %}
+        </div>
+
+        <div class="form-group">
+            <label>Ссылка на страницу:</label>
+            <input class="form-control" type="text" name="link" value="{{ object.link }}"/>
+        </div>
+
+        {% include "parts/gallery-edit.twig" %}
+
+        {% if object.image %}
+            <div class="form-group">
+                <label>Ссылка на изображение:</label>
+                <input class="form-control" type="text" name="image" value="{{ object.image }}"/>
+                <p class="help-block">Выбери из <a href="/admin/file" target="_blank">файлового архива</a>.&nbsp; Изображение должно быть не уже 1000 пикселей, желательно в пропорциях 2:1 (например, 2000×100).</p>
+            </div>
+        {% endif %}
+
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить изменения</button>
+        </div>
+
+        <p class="alert alert-info" id="msgbox" style="display: none"></p>
+    </form>
+{% endblock %}

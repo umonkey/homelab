@@ -1,0 +1,62 @@
+.gallery {
+    line-height: 0;
+}
+.gallery .item {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+    text-indent: -10000px;
+
+    font-size: 0;
+    line-height: 0;
+
+    margin: 0 1px 1px 0;
+    outline: none;
+}
+
+.gallery-group {
+    line-height: 0;
+    font-size: 0;
+}
+.gallery-group .thumbnail {
+    background-position: 50% 50%;
+    background-size: cover;
+    border-radius: 3px;
+    border: solid 1px #ccc;
+    display: inline-block;
+    height: 150px;
+    margin: 0 5px 5px 0;
+    padding: 0;
+    position: relative;
+    width: 150px;
+}
+.gallery-group .add {
+    line-height: 150px;
+    font-size: 150px;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+    vertical-align: top;
+}
+.gallery-group input.gallery {
+    display: none;
+}
+.gallery-group a span {
+    background-color: #fff;
+    color: #000;
+    display: inline-block;
+    float: right;
+    font-size: 45px;
+    line-height: 50px;
+    opacity: 0.25;
+    text-align: center;
+    width: 50px;
+}
+.gallery-group a:hover span {
+    opacity: 1.0;
+}

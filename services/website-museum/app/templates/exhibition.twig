@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block page_title %}{{ object.title }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ object.title }}</h1>
+        {% if object.subtitle %}
+            <p class="lead">{{ object.subtitle }}</p>
+        {% endif %}
+
+        {% if object.date_human %}
+            <p>Выставка действует с {{ object.date_human }}</p>
+        {% else %}
+            <p>Выставка действует постоянно.</p>
+        {% endif %}
+    </div>
+
+    {% if object.contents %}
+        {{ object.contents_html|raw }}
+    {% else %}
+        <p>Описание отсутствует.</p>
+    {% endif %}
+
+    {% include "parts/gallery.twig" %}
+
+    <hr/>
+
+    <p>Эту и <a href="/exhibitions">другие выставки</a> вы можете посетить в выставочных залах музея.&nbsp; Экскурсовод вам всё расскажет и покажет.</p>
+
+    {% include "parts/about-short.twig" %}
+
+    <p><strong>ВНИМАНИЕ!</strong> Сейчас в музее ремонт, доступ в залы для самостоятельного осмотра выставок (без экскурсовода) ограничен.</p>
+{% endblock %}

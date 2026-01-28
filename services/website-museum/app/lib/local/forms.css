@@ -1,0 +1,18 @@
+form .ctl3 {
+    display: none;
+}
+
+.form-radio label {
+    display: block;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.form-group > label {
+    font-weight: normal;
+    color: #444;
+}
+
+input.form-control.short {
+    max-width: 250px;
+}

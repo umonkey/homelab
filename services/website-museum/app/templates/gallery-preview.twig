@@ -1,0 +1,7 @@
+{% for file in files %}
+    {% if file.images.original.url %}
+        <a class="thumbnail" href="{{ file.images.original.url }}" style="background-image: url(/files/{{ file.id }}/small.jpg)" target="_blank">
+            <span class="delete">×</span>
+        </a>
+    {% endif %}
+{% endfor %}

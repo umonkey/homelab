@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Статьи — {{ site_name }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Статьи</h1>
+    </div>
+
+    {% if objects %}
+        <ul>
+            {% for object in objects %}
+                <li>
+                    <a href="/articles/{{ object.id }}">{{ object.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет ни одной статьи.</p>
+    {% endif %}
+{% endblock %}

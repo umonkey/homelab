@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Добавление фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Пополнение коллекции старых фотографий</h1>
+    </div>
+
+    <p>Вы можете загрузить один или несколько файлов.  После загрузки файлов можно будет прикрепить к ним современные виды с тех же ракурсов и отметить расположение сфотографированных объектов на карте.  Если у вас есть оригиналы фотографий, но нет сканера — пожалуйста, <a href="/articles/1">принесите их в музей</a>, мы их отсканируем, оригинал останется у вас.</p>
+
+    <form method="post" class="async">
+        <input type="hidden" name="step" value="1"/>
+
+        <div class="form-group actions">
+            <label class="btn btn-default">Выбрать файл<input type="file" name="photo" accept="image/*"/></label>
+            <button class="btn btn-primary">Загрузить</button>
+        </div>
+
+        <div class="progressbar" style="display:none"><div class="done"></div></div>
+    </form>
+{% endblock %}

@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS sebmus;
+CREATE USER IF NOT EXISTS 'sebmus'@'%' IDENTIFIED BY 'ecbuPyfV';
+GRANT ALL PRIVILEGES ON sebmus.* TO 'sebmus'@'%';

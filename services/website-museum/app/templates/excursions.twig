@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Экскурсии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Экскурсии от себежского музея</h1>
+        <p class="lead">Осмотр залов музея, прогулки по городу и интересным места Себежского района.&nbsp; Сотрудники музея помогут вам интересно провести время в городе.</p>
+
+        {% if is_admin %}
+            <p><a class="btn btn-primary" href="/admin/excursion/add?back=/excursions">Добавить экскурсию</a></p>
+        {% endif %}
+    </div>
+
+    {% if objects %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Название экскурсии</th>
+                    <th class="number">Время</th>
+                    <th class="number">Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in objects %}
+                    <tr>
+                        <td>
+                            <a href="/excursions/{{ object.id }}">{{ object.title }}</a>
+                        </td>
+                        <td class="number">{{ object.duration }}</td>
+                        <td class="number">{{ object.price }}&nbsp;руб</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Извините, нет ни одной экскурсии.</p>
+    {% endif %}
+
+    {% include "parts/excursion.twig" %}
+{% endblock %}

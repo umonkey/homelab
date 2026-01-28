@@ -1,0 +1,7 @@
+<div class="files">
+    {% for file in docs %}
+        <div class="file">
+            <a class="tile" href="/admin/file/{{ file.id }}/edit" title="{{ file.name }}" style="background-image: url(/files/{{ file.id }}/small.jpg)">{{ file.name }}</a>
+        </div>
+    {% endfor %}
+</div>

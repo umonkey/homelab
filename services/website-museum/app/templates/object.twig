@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block page_title %}{{ object.title }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ object.title }}</h1>
+        {% if object.subtitle %}
+            <p class="lead">{{ object.subtitle }}</p>
+        {% endif %}
+    </div>
+
+    {% if object.contents %}
+        {{ object.contents_html|raw }}
+    {% else %}
+        <p>Описание отсутствует.</p>
+    {% endif %}
+
+    {% include "parts/gallery.twig" %}
+
+    <hr/>
+
+    <p>Этот и <a href="/objects">другие экспонаты</a> вы можете своими глазами увидеть в выставочных залах музея.&nbsp; Экскурсовод расскажет вам всё, что о них известно.&nbsp; Как попасть в музей, график его работы и другие подробности посещения описаны на <a href="/articles/1">специальной странице</a>.</p>
+
+    <p><strong>ВНИМАНИЕ!</strong> Сейчас в музее ремонт, доступ в залы для самостоятельного осмотра выставок (без экскурсовода) ограничен.</p>
+{% endblock %}

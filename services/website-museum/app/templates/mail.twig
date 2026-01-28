@@ -1,0 +1,67 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Связь — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Обратная связь</h1>
+        {% if object.subtitle %}
+            <p class="lead">Отправьте вопрос, ответ на который вы не нашли на сайте.</p>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <p>Мы стараемся сделать сайт достаточно информативным, чтобы у посетителей не оставалось вопросов по работе музея.&nbsp; Если у&nbsp;вас всё ещё есть вопросы или предложения&nbsp;— пишите, мы&nbsp;ответим и постараемся сделать сайт ещё лучше.</p>
+            <p>Если вы хотите записаться на <a href="/excursions">экскурсию</a> или <a href="/exhibitions">посетить музей</a> в&nbsp;составе группы&nbsp;— не забудьте сообщить даты и количество желающих.</p>
+            <p>Если вам интересны архивные документы&nbsp;— опишите их максимально подробно.&nbsp; Личного доступа к архивам мы предоставить не можем, но постараемся найти и прислать интересующую вас информацию.</p>
+            <p>Если у&nbsp;вас неотложный вопрос — звоните по телефону <a class="phone" href="tel:78114921474">+7 (811) 402-14-74</a> в будние дни с 9:00 до 18:00.</p>
+            <p>Вы можете с тем же успехом отправить email на адрес <a href="mailto:seb-museum@yandex.ru">seb-museum@yandex.ru</a>.</p>
+        </div>
+
+        <div class="col-sm-6">
+            {% if mail_sent %}
+                <p class="alert alert-info">Сообщение отправлено, спасибо!</p>
+                <p>Сотрудники постараются ответить в течение 3 рабочих дней.</p>
+                <p><a href="/mail">Отправить ещё одно сообщение</a></p>
+            {% else %}
+                <form method="post" class="async feedback">
+                    <div class="form-group">
+                        <label>Ваше имя:</label>
+                        <input class="form-control" type="text" name="name" required="required" autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваш email:</label>
+                        <input class="form-control" type="text" name="from" required="required"/>
+                        <p class="help-block">На этот адрес придёт ответ.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Текст обращения:</label>
+                        <textarea class="form-control" name="message" rows="5" required="required"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Цифры с картинки:</label>
+                                <input class="form-control" type="text" name="captcha" required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/captcha.png" alt="captcha" style="margin-top: 20px" width="91" height="43" />
+                        </div>
+                    </div>
+
+                    <div class="form-group ctl3">
+                        <label class="checkbox-inline"><input type="checkbox" name="pdata" value="yes" autocomplete="off"/> Согласие на обработку персональных данных</label>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary">Отправить</button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

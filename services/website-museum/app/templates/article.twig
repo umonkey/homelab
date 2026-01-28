@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block page_title %}{{ object.title }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ object.title }}</h1>
+        {% if object.subtitle %}
+            <p class="lead">{{ object.subtitle }}</p>
+        {% endif %}
+    </div>
+
+    {{ object.contents_html|raw }}
+
+    {% include "parts/gallery.twig" %}
+
+    <hr/>
+
+    <p><a href="/articles">Другие статьи</a></p>
+{% endblock %}

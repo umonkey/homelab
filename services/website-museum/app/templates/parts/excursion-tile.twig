@@ -1,0 +1,10 @@
+<div class="tile">
+    <div class="wrap">
+        <a href="/excursions/{{ object.id }}">
+            <img src="/images/300x200.png" alt="{{ object.small_image }}" style="background-image: url({{ object.small_image_parsed }})"/>
+        </a>
+        <div class="title">
+            <a href="/exhibitions/{{ object.id }}">{% if object.short_title %}{{ object.short_title }}{% else %}{{ object.title }}{% endif %}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8"/>
+
+    <title>{% block page_title %}{% if page_title %}{{ page_title }}{% endif %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+
+    <meta name="robots" content="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{{ assets.libs_min_css }}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ assets.app_min_css }}" media="screen" />
+
+    <meta name="yandex-verification" content="0db557a4ee06299d" />
+    <meta name="google-site-verification" content="Tz0Zv99rIrGgWP6ej4uP6LKSgNFzE7Qv9q5ESpSSiu0" />
+
+    <link rel="canonical" href="https://seb-museum.ru{{ page_path }}"/>
+
+    <meta property="og:country-name" content="Russia"/>
+    <meta property="og:site_name" content="Себежский краеведческий музей"/>
+    <meta property="og:locality" content="Sebezh"/>
+    <meta property="og:email" content="seb-museum@yandex.ru"/>
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:url" content="https://seb-museum.ru{{ page_path }}"/>
+
+    {% block opengraph %}{% endblock %}
+
+    {% block more_meta %}{% endblock %}
+</head>
+
+<body class="bootstrap {% block body_class %}{% if body_class %} {{ body_class }}{% endif %}{% endblock %}">
+  <header class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand" title="Открыть сайт">{% block brand %}Себежский краеведческий музей{% endblock %}</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          {% block topnav %}
+            <li{% if tab == "exhibitions" %} class="active"{% endif %}><a href="/exhibitions">Выставки</a></li>
+            <li{% if type == "object" %} class="active"{% endif %}><a href="/objects">Экспонаты</a></li>
+            <li{% if tab == "excursions" %} class="active"{% endif %}><a href="/excursions">Экскурсии</a></li>
+            <li{% if tab == "events" %} class="active"{% endif %}><a href="/events">События</a></li>
+            <li{% if tab == "archive" %} class="active"{% endif %}><a href="/archive">Архив</a></li>
+            {% if path == "/places" %}
+                <li class="active"><a href="/places">Места</a></li>
+            {% endif %}
+            <li{% if tab == "blog" %} class="active"{% endif %}><a href="/blog">Блог</a></li>
+            <li{% if tab == "photo" %} class="active"{% endif %}><a href="/photo">Фото</a></li>
+            <li{% if path == "/articles/1" %} class="active"{% endif %}><a href="/articles/1">О музее</a></li>
+          {% endblock %}
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  {% block container %}
+    {% block splash %}{% endblock %}
+
+    <div class="container mcontainer">
+      {% block banner %}
+        {% if banner %}
+          <p class="alert alert-info">{{ banner|raw }}</p>
+        {% endif %}
+      {% endblock %}
+      {% block content %}{% endblock %}
+    </div>
+  {% endblock %}
+
+  {% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><a href="/exhibitions">Выставки</a> &middot; <a href="/objects">экспонаты</a> &middot; <a href="/excursions">экскурсии</a></p>
+                    <p><a href="/events">События</a> &middot; <a href="/articles">статьи</a> &middot; <a href="/articles/1">контакты</a></p>
+                    <p style="opacity: 0.5"><a href="/admin" rel="nofollow">Управление сайтом</a>{% if edit_link %} &middot; <a href="{{ edit_link }}">редактировать страницу</a>{% endif %}</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>МБУК «Себежский краеведческий музей»</p>
+                    <p>182250, Псковская область, г. Себеж, ул. Пролетарская, д. 21.</p>
+                    <p><a href="tel:+78114021474">+7 (81140) 21-474</a> &middot; <a href="/mail">написать письмо</a> &middot; <a href="/articles/3">график</a></p>
+                    <p><a href="/eval">Оценить качество услуг</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+  {% endblock %}
+
+  <div id="wait_block"></div>
+
+  <script type="text/javascript" src="{{ assets.libs_min_js }}" language="javascript"></script>
+  <script type="text/javascript" src="{{ assets.app_min_js }}" language="javascript"></script>
+  {{ more_scripts|raw }}
+
+  {% if host != "museum.local" %}
+    <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter44977603 = new Ya.Metrika({ id:44977603, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/44977603" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+  {% endif %}
+
+</body>
+</html>

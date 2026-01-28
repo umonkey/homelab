@@ -1,0 +1,141 @@
+{% extends "base.twig" %}
+
+{% block page_title %}{{ photo.title }} — Фото — {{ site_name }}{% endblock %}
+
+{% block opengraph %}
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ photo.title }}"/>
+    <meta property="og:image" content="https://seb-museum.ru{{ photo.images.old.o.link }}"/>
+    <meta property="og:image:alt" content="{{ photo.title }}"/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:image:width" content="{{ photo.images.old.o.width }}"/>
+    <meta property="og:image:height" content="{{ photo.images.old.o.height }}"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@umonkey"/>
+    <meta name="twitter:title" content="{{ photo.title }}"/>
+    <meta name="twitter:image" content="https://seb-museum.ru{{ photo.images.old.o.link }}"/>
+{% endblock %}
+
+{% block more_meta %}
+    {% if prev_photo %}
+        <link rel="prev" href="{{ prev_photo }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block container %}
+    <div class="bigphoto">
+        <div class="toolbar">
+            <div class="title">{{ photo.title }}</div>
+
+            <div class="actions">
+                <a href="{% if photo.images.old.p %}{{ photo.images.old.p.link }}{% else %}{{ photo.images.old.o.link }}{% endif %}" target="_blank"><i class="fa fa-search-plus"></i></a>
+
+                {% if is_admin %}
+                    <a href="/admin/photo/{{ photo.id }}/edit?back=/photo/{{ photo.id }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="/admin/photo/{{ photo.id }}/old/edit?back=/photo/{{ photo.id }}"><i class="fa fa-crop"></i></a>
+                    <a href="/admin/photo/{{ photo.id }}/share"><i class="fa fa-retweet"></i></a>
+                    <a href="/admin/photo/{{ photo.id }}/edit?back=/photo/{{ photo.id }}"><i class="fa fa-trash-o"></i></a>
+                    <a href="/photo/submit"><i class="fa fa-cloud-upload"></i></a>
+                {% endif %}
+            </div>
+
+            {% if photo.images.new %}
+                <div class="variants">
+                    <a href="{{ photo.images.old.o.link }}" style="background-image: url({{ photo.images.old.s.link }})"></a>
+                    <a href="{{ photo.images.new.o.link }}" style="background-image: url({{ photo.images.new.s.link }})"></a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="img" style="background-image: url({{ photo.images.old.l.link }})"></div>
+
+        {% if next_photo %}
+            <a class="nav left" href="{{ next_photo }}">«</a>
+        {% endif %}
+
+        {% if prev_photo %}
+            <a class="nav right" href="{{ prev_photo }}">»</a>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        {% if photo.description %}
+            <div class="row" style="margin-top: 20px; margin-bottom: 50px">
+                <div class="col-md-6">
+                    {{ photo.description_html|raw }}
+                </div>
+                <div class="col-md-6">
+                    {% if photo.lat and photo.lng %}
+                        <div id="homemap" class="map" data-zoom="17" data-center="{{ photo.lat }}, {{ photo.lng }}">Загружаю карту…</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% elseif photo.lat and photo.lng %}
+            <div id="homemap" class="map" data-zoom="17" data-center="{{ photo.lat }}, {{ photo.lng }}" style="margin-top: 20px"></div>
+        {% endif %}
+
+
+        <div id="disqus_thread" data-url="https://seb-museum.ru{{ page_path }}" data-id="photo:{{ photo.id }}"></div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>{{ photo.title }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 photo">
+            <div class="photow">
+                <a data-fancybox="photo" href="{% if photo.images.old.p %}{{ photo.images.old.p.link }}{% else %}{{ photo.images.old.o.link }}{% endif %}" target="_blank">
+                    <img src="{{ photo.images.old.l.link }}" alt="{{ photo.title }}" class="photo"/>
+                </a>
+
+                {% if prev_photo %}
+                    <a href="{{ prev_photo }}" class="prev" title="Предыдущее фото">
+                        <i class="fa fa-chevron-circle-left"></i>
+                    </a>
+                {% endif %}
+                {% if next_photo %}
+                    <a href="{{ next_photo }}" class="next" title="Следующее фото">
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+
+            {% if photo.images.new %}
+                <p>Современный вид:</p>
+                <div class="photow">
+                    <a data-fancybox="photo" href="{% if photo.images.new.p %}{{ photo.images.new.p.link }}{% else %}{{ photo.images.new.o.link }}{% endif %}" target="_blank">
+                        <img src="{{ photo.images.new.l.link }}" alt="{{ photo.title }} (современный вид)" class="photo"/>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            {% if photo.description %}
+                {{ photo.description_html|raw }}
+            {% else %}
+                <p>Нет подробного описания этой фотографии.</p>
+            {% endif %}
+
+            {% if photo.lat and photo.lng %}
+                <div id="homemap" class="map" data-zoom="17" data-center="{{ photo.lat }}, {{ photo.lng }}">Загружаю карту…</div>
+            {% endif %}
+
+            {% if is_admin %}
+                <div class="actions">
+                    <hr/>
+                    <a class="btn btn-default" href="/admin/photo/{{ photo.id }}/edit?back=/photo/{{ photo.id }}"><i class="fa fa-pencil-square-o"></i> Редактировать</a>
+                    <a class="btn btn-default" href="/admin/photo/{{ photo.id }}/old/edit?back=/photo/{{ photo.id }}"><i class="fa fa-crop"></i> Кадрировать</a>
+                    <a class="btn btn-default" href="/admin/photo/{{ photo.id }}/share"><i class="fa fa-retweet"></i> Отправить в VK</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

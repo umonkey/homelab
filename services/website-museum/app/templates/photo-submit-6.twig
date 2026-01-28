@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Добавление фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Пополнение коллекции старых фотографий</h1>
+        <p class="lead">Шаг 6: публикация.</p>
+    </div>
+
+    <form method="post" class="async">
+        <input type="hidden" name="step" value="6"/>
+
+        <div style="margin-bottom: 20px">
+            <p>Основное изображение:</p>
+            <img src="{{ photo.images.old.s.link }}"/>
+        </div>
+
+        {% if photo.images.new %}
+            <div style="margin-bottom: 20px">
+                <p>Свежее изображение:</p>
+                <img src="{{ photo.images.new.s.link }}"/>
+            </div>
+        {% endif %}
+
+        <p>Заголовок:</p>
+        <p>{{ photo.title }}</p>
+
+        <p>Описание:</p>
+        {{ photo.description_html|raw }}
+
+        <hr/>
+
+        <div class="actions">
+            <label class="btn btn-primary">Опубликовать<input type="radio" name="published" value="yes" class="autosubmit hidden" autocomplete="off"/></label>
+            <label class="btn btn-default">Оставить в черновиках<input type="radio" name="published" value="no" class="autosubmit hidden" autocomplete="off"/></label>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,27 @@
+.map {
+    clear: both;
+
+    width: 100%;
+    min-height: 300px;
+    background-color: #eee;
+}
+
+#place_map {
+    margin-bottom: 20px;
+}
+
+#places_map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body.places .leaflet-top {
+    top: 50px;
+}
+
+.leaflet-popup-content p {
+    margin: 5px 0;
+}

@@ -1,0 +1,69 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Редактирование места{% else %}Добавление места{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Редактирование места</h1>
+        {% else %}
+            <h1>Добавление места</h1>
+        {% endif %}
+    </div>
+
+    <form method="post" class="async">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Название:</label>
+            <input class="form-control" type="text" name="title" required="required" autofocus="autofocus" value="{{ object.title }}"/>
+            <p class="help-block">Пример: «Замковая гора», «Укрепрайон в Дедино»</p>
+        </div>
+
+        <div class="form-group">
+            <label>Описание:</label>
+            <textarea class="form-control" name="contents" rows="10">{{ object.contents  }}</textarea>
+            {% include "parts/md-help.twig" %}
+        </div>
+
+        {% include "parts/gallery-edit.twig" %}
+
+        <hr/>
+
+        <div class="form-group">
+            <label>Подзаголовок:</label>
+            <input class="form-control" type="text" name="subtitle" value="{{ object.subtitle }}"/>
+            <p class="help-block">Дополнительный текст, описывающий статью в одном предложении.  Виден под заголовком.</p>
+        </div>
+
+        <div class="form-group">
+          <label>Положение на карте:</label>
+
+          <input id="latctl" type="hidden" name="lat" value="{{ object.lat }}"/>
+          <input id="lngctl" type="hidden" name="lng" value="{{ object.lng }}"/>
+
+          <div id="place_editor" class="map dragable" data-center="{% if object.lat and object.lng %}{{ object.lat }}, {{ object.lng }}{% else %}56.27740751089426, 28.484826698302722{% endif %}" data-for-lat="#latctl" data-for-lon="#lngctl"></div>
+          <p class="help-block">Перетащите метку для изменения адреса объекта.</p>
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label class="radio-inline"><input type="radio" name="published" value="yes"{% if object.published or not object.id %} checked="checked"{% endif %}/> Опубликовать</label>
+            <label class="radio-inline"><input type="radio" name="published" value="no"{% if not object.published and object.id %} checked="checked"{% endif %}/> черновик</label>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary">Сохранить изменения</button>
+            {% if object.id %}
+                <a href="/articles/{{ object.id }}" class="btn btn-default">Открыть на сайте</a>
+            {% endif %}
+        </div>
+
+        <p class="alert alert-info" id="msgbox" style="display: none"></p>
+    </form>
+{% endblock %}

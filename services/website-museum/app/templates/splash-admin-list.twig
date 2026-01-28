@@ -1,0 +1,34 @@
+{% extends "admin-docs.twig" %}
+
+{% block actions %}{% endblock %}
+
+{% block objects %}
+    {% if docs %}
+        {% for doc in docs %}
+            <div class="row splash-row">
+                <div class="col-sm-4">
+                    {% if doc.image %}
+                        <img src="{{ doc.image }}" alt="splash"/>
+                    {% elseif doc.gallery_images %}
+                        <img src="{{ doc.gallery_images[0].small }}" alt="splash"/>
+                    {% endif %}
+                </div>
+                <div class="col-sm-8">
+                    <p class="splash-title">{{ doc.title }}</p>
+                    {% if doc.description %}
+                        <p class="splash-description">{{ doc.description }}</p>
+                    {% else %}
+                        <p class="splash-description">Описание отсутствует.</p>
+                    {% endif %}
+                    <p>Ссылка: <a target="_blank" href="{{ doc.link }}">{{ doc.link }}</a></p>
+
+                    <p><a href="/admin/splash/{{ doc.id }}/edit" class="btn btn-default">Редактировать</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет ни одной заставки, класс!</p>
+    {% endif %}
+
+    <p><a href="/admin/splash/add" class="btn btn-primary">Добавить заставку</a></p>
+{% endblock %}

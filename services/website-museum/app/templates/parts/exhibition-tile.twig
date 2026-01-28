@@ -1,0 +1,15 @@
+<div class="tile">
+    <div class="wrap">
+        <a href="/exhibitions/{{ object.id }}">
+            <img src="/images/300x200.png" alt="{{ object.small_image }}" style="background-image: url({{ object.small_image_parsed }})"/>
+        </a>
+        {% if object.date_human %}
+            <div class="date">С {{ object.date_human }}</div>
+        {% else %}
+            <div class="date">ДЕЙСТВУЕТ ПОСТОЯННО</div>
+        {% endif %}
+        <div class="title">
+            <a href="/exhibitions/{{ object.id }}">{% if object.short_title %}{{ object.short_title }}{% else %}{{ object.title }}{% endif %}</a>
+        </div>
+    </div>
+</div>

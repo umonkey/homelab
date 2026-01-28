@@ -1,0 +1,7 @@
+{% if object.gallery_images %}
+    <div class="gallery">
+        {% for file in object.gallery_images %}
+            <a class="item" href="{{ file.large }}" target="_blank" style="background-image: url({{ file.small }})" data-fancybox="gallery">Открыть изображение</a>
+        {% endfor %}
+    </div>
+{% endif %}

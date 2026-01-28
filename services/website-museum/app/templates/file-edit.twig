@@ -1,0 +1,46 @@
+{% extends "admin.twig" %}
+
+{% block page_title %}{% if object.id %}Файл {{ object.name }}{% else %}Новый файл{% endif %} — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        {% if object.id %}
+            <h1>Файл {{ object.name }}</h1>
+        {% else %}
+            <h1>Добавление файла</h1>
+        {% endif %}
+    </div>
+
+    <form method="post" action="/dev/null" class="async">
+        {% if args.get.back %}
+            <input type="hidden" name="back" value="{{ args.get.back }}"/>
+        {% endif %}
+
+        <div class="row">
+            {% if object.images.original.width%}
+                <div class="col-md-6">
+                    <img class="mainpic" src="{{ object.images.original.url }}" alt="{{ object.name }}">
+                    <p class="help-block">Размер изображения: {{ object.images.original.width }}×{{ object.images.original.height }}</p>
+                </div>
+            {% endif %}
+
+            {% if object.images.original.url %}
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Код для вставки:</label>
+                        <pre>{{ object.images.original.url }}</pre>
+                        <p class="help-block">Код надо вставлять в текст отдельной строкой, выделить пустыми строками сверху и снизу.</p>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn btn-primary copy" data-clipboard="{{ object.images.original.url }}">Скопировать код</button>
+                    </div>
+
+                    <p class="alert alert-info" id="msgbox" style="display: none"></p>
+                </div>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

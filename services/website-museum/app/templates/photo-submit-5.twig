@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Добавление фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Пополнение коллекции старых фотографий</h1>
+        <p class="lead">Шаг 5: загрузка свежей фотографии.</p>
+    </div>
+
+    <p>Загрузить свежее изображение этого объекта (здания, пейзажа, человека)?</p>
+
+    <form method="post" class="async">
+        <input type="hidden" name="step" value="5"/>
+
+        <div class="actions">
+            <label class="btn btn-default">Да, выбрать файл<input type="file" name="photo" accept="image/*" class="autosubmit"/></label>
+            <button class="btn btn-default">Нет, у меня всё</button>
+        </div>
+    </form>
+{% endblock %}

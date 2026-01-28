@@ -1,0 +1,15 @@
+<div class="form-group">
+    <input type="hidden" name="gallery" value="{{ object.gallery }}"/>
+    <label>Галерея изображений:</label>
+    <div class="gallery-group">
+        {% for file in object.gallery_images %}
+            {% if file.large %}
+                <a data-fancybox="gallery" class="thumbnail" href="{{ file.large }}" style="background-image: url({{ file.small }})" target="_blank" data-id="{{ file.id }}">
+                    <span class="delete">×</span>
+                </a>
+            {% endif %}
+        {% endfor %}
+
+        <label class="add thumbnail pickfiles">+<input class="gallery" type="file" multiple="multiple" accept="image/*"/></label>
+    </div>
+</div>

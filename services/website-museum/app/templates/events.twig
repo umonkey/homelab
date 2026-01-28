@@ -1,0 +1,46 @@
+{% extends "base.twig" %}
+
+{% block page_title %}События — {{ site_name }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>События и мероприятия</h1>
+        <p class="lead">Здесь всегда можно найти ниформацию о публичных мероприятиях, организованных музеем, в которых могут принять участие все желающие.</p>
+
+        {% if is_admin %}
+            <p><a class="btn btn-primary" href="/admin/event/add?back=/events">Добавить событие</a></p>
+        {% endif %}
+    </div>
+
+    <h2>Предстоящие события</h2>
+    {% if pending %}
+        <table class="table">
+            <tbody>
+                {% for event in pending %}
+                    <tr>
+                        <td style="white-space: nowrap">{{ event.date_human }}</td>
+                        <td>{{ event.time_human }}</td>
+                        <td class="wide"><a href="/events/{{ event.id }}">{{ event.title }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет информации по предстоящим событиям.</p>
+    {% endif %}
+
+    {% if past %}
+        <h2>Прошедшие события</h2>
+        <table class="table">
+            <tbody>
+                {% for event in past %}
+                    <tr>
+                        <td style="white-space: nowrap">{{ event.date_human }}</td>
+                        <td>{{ event.time_human }}</td>
+                        <td class="wide"><a href="/events/{{ event.id }}">{{ event.title }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

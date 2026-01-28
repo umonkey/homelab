@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Дневник — {{ site_name }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Дневник</h1>
+
+        {% if is_admin %}
+            <p><a class="btn btn-primary" href="/admin/blog/add?back=/blog">Добавить заметку</a></p>
+        {% endif %}
+    </div>
+
+    {% if objects %}
+        <table class="blogs">
+            <tbody>
+                {% for object in objects %}
+                    <tr>
+                        <td class="date">{{ object.date_human }}</td>
+                        <td>
+                            <a href="/blog/{{ object.id }}">{{ object.title }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет ни одной заметки.</p>
+    {% endif %}
+{% endblock %}

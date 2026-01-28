@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block page_title %}Фотографии — {{ site_name }}{% endblock %}
+
+{% block content %}
+    {% include "parts/breadcrumbs.twig" %}
+
+    <div class="page-header">
+        <h1>Фотографии Себежа</h1>
+        <p class="lead">Здесь собрана коллекция старых фотографий Себежа и окрестностей.</p>
+
+        <p><a class="btn btn-primary" href="/photo/submit">Добавить фотографию</a></p>
+    </div>
+
+    <div class="photos">
+        {% for photo in photos %}
+            {% if photo.images.old.s %}
+                <div class="photo">
+                    <a href="/photo/{{ photo.id }}" style="background-image: url({{ photo.images.old.s.link }})" title="{{ photo.title }}"></a>
+                </div>
+            {% else %}
+                <!-- file {{ photo.id }} damaged -->
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <p>Если у вас есть интересные фотографии Себежа и окрестностей — пожалуйста, <a href="/photo/submit">пришлите их нам</a>.</p>
+{% endblock %}
