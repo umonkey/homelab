@@ -3,3 +3,6 @@ update:
 
 build:
 	docker compose build
+
+stop:
+	docker compose down --remove-orphans
