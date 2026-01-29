@@ -30,6 +30,8 @@ services:
       context: services/nginx
     container_name: homelab_nginx
     restart: unless-stopped
+    environment:
+      DIGITALOCEAN_TOKEN: /run/secrets/digitalocean_token
     ports:
       - "80:80"
       - "443:443"
@@ -109,3 +111,5 @@ secrets:
     file: ./secrets/turso_api_token.txt
   dropbox_token:
     file: ./secrets/dropbox_token.txt
+  digitalocean_token:
+    file: ./secrets/digitalocean_token.txt

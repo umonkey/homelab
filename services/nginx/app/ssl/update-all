@@ -1,4 +1,22 @@
 #!/bin/sh
+# This copies the token from the secrets to the certbot config file,
+# then runs the update scripts.
+#
+# If a token is lost, a new one can be generated here:
+# https://cloud.digitalocean.com/settings/api/tokens
+
 set -e
+
+SECRET=/run/secrets/digitalocean_token
+
+if [ ! -f $SECRET ]; then
+    echo "Secret $SECRET not found."
+    exit 1
+fi
+
+TOKEN=`cat $SECRET`
+echo "dns_digitalocean_token = $TOKEN" > digitalocean.ini
+
 ./update-seb-museum.ru
+
 nginx -s reload
