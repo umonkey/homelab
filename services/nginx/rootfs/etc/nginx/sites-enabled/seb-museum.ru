@@ -7,7 +7,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/seb-museum.ru/privkey.pem;
 
     location / {
-        proxy_pass http://homelab_museum:8001;
+        proxy_pass http://homelab_museum:80;
     }
 
     gzip on;

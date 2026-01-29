@@ -8,7 +8,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/umonkey.net/privkey.pem;
 
     location / {
-        proxy_pass http://homelab_files:8002;
+        proxy_pass http://homelab_files:80;
     }
 
     gzip on;
