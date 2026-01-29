@@ -1,1 +1,2 @@
 # thing here yet
+0 0 * * 1 cd /app/ssl; ./update-all

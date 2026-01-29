@@ -1,4 +1,4 @@
 #!/bin/sh
-#set -e
+set -e
 ./update-seb-museum.ru
-service nginx reload
+nginx -s reload
