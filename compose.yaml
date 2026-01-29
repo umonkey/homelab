@@ -43,7 +43,7 @@ services:
       - homelab
 
   website-museum:
-    image: ghcr.io/umonkey/homelab-website-museum:latest
+    image: ghcr.io/umonkey/homelab-museum:latest
     #build:
     #  context: services/website-museum
     container_name: homelab_museum
@@ -56,7 +56,7 @@ services:
       - homelab
 
   website-files:
-    image: ghcr.io/umonkey/homelab-website-files:latest
+    image: ghcr.io/umonkey/homelab-files:latest
     #build:
     #  context: services/website-files
     container_name: homelab_files
@@ -69,7 +69,7 @@ services:
       - homelab
 
   website-land:
-    image: ghcr.io/umonkey/homelab-website-land:latest
+    image: ghcr.io/umonkey/homelab-land:latest
     #build:
     #  context: services/website-land
     container_name: homelab_land

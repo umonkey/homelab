@@ -11,7 +11,8 @@ fi
 
 # Make sure we can pull the images.
 if [ -n "$GHCR_TOKEN" ]; then
-    docker login ghcr.io -u umonkey -p "$GHCR_TOKEN"
+    echo "Logging in to ghcr.io ..."
+    echo $GHCT_TOKEN | docker login ghcr.io -u umonkey --password-stdin
 fi
 
 # Pull the updates.
