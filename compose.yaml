@@ -54,8 +54,12 @@ services:
       context: services/website-land
     container_name: homelab_land
     restart: unless-stopped
+    volumes:
+      - land_data:/app/var
     ports:
-      - "8003:8080"
+      - "8003:80"
+    networks:
+      - homelab
 
 networks:
   homelab:
@@ -64,6 +68,7 @@ volumes:
   mysql_data:
   museum_data:
   files_data:
+  land_data:
 
 secrets:
   mysql_admin_password:

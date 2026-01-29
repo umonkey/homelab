@@ -1,2 +1,2 @@
-/var/twig_cache
-/var/logs
+/app/var
+/var

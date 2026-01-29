@@ -1,8 +1,10 @@
+SERVICE_NAME=homelab_land
+
 build:
-	docker build -t doh3-server_website-land:latest .
+	docker build -t $(SERVICE_NAME) .
 
-start:
-	docker run --rm -p 8001:8080 doh3-server_website-land:latest
+run:
+	docker run --rm -p 8003:80 --name $(SERVICE_NAME) --replace $(SERVICE_NAME)
 
-lshell:
-	docker exec -it homelab_museum sh
+debug:
+	docker run --rm -it $(SERVICE_NAME) bash
