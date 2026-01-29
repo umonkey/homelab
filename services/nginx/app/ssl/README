@@ -1,0 +1,5 @@
+Usage:
+
+certbot plugins      -- list plugins
+certbot certificates -- list installed certificates
+certbot delete       -- select certificates to delete
