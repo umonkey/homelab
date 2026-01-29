@@ -1,7 +1,5 @@
-SERVICE_NAME=homelab_files
-
-build:
-	docker build -t $(SERVICE_NAME) .
+SERVICE_NAME=homelab-files
+include ../common.mk
 
 run:
 	docker run --rm -p 8001:80 --name $(SERVICE_NAME) $(SERVICE_NAME)

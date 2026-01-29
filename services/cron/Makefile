@@ -1,8 +1,8 @@
-build:
-	docker build -t homelab_cron .
+SERVICE_NAME=homelab-cron
+include ../common.mk
 
 shell:
-	docker run --rm -e TURSO_API_TOKEN -it homelab_cron bash
+	docker run --rm -e TURSO_API_TOKEN -it $(SERVICE_NAME) bash
 
 lshell:
-	docker exec -it homelab_cron bash
+	docker exec -it $(SERVICE_NAME) bash

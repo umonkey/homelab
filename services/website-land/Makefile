@@ -1,7 +1,5 @@
-SERVICE_NAME=homelab_land
-
-build:
-	docker build -t $(SERVICE_NAME) .
+SERVICE_NAME=homelab-land
+include ../common.mk
 
 run:
 	docker run --rm -p 8003:80 --name $(SERVICE_NAME) --replace $(SERVICE_NAME)

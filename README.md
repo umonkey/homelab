@@ -41,3 +41,9 @@ ssh-keygen -t ed25519 -C "github-ci" -f ./deploy_key
 ## Configuration
 
 Most configuration happens via the environment, in the `compose.yaml` file.
+Secrets are passed via the standard secrets mechanism, aka files `/run/secrets/*` which containers can use as they need.
+
+## Container images
+
+Containers are built and stored in GHCR, a list can be viewed [here](https://github.com/umonkey?tab=packages).
+To push images, you need a "personal access token" which needs to be set in the `GHCR_TOKEN` variable, and can be issued [here](https://github.com/settings/tokens).

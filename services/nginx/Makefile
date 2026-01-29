@@ -1,7 +1,5 @@
-SERVICE_NAME=homelab_nginx
-
-build:
-	docker build -t $(SERVICE_NAME) .
+SERVICE_NAME=homelab-nginx
+include ../common.mk
 
 shell:
 	docker run --rm -e TURSO_API_TOKEN -it $(SERVICE_NAME) bash

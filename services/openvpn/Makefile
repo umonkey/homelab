@@ -1,7 +1,5 @@
-SERVICE_NAME=homelab_openvpn
-
-build:
-	docker build -t $(SERVICE_NAME) .
+SERVICE_NAME=homelab-openvpn
+include ../common.mk
 
 shell:
 	docker run --rm -it $(SERVICE_NAME) bash
