@@ -9,6 +9,11 @@ if [ ! -f compose.yaml ]; then
     exit 1
 fi
 
+# Make sure we can pull the images.
+if [ -n "$GHCR_TOKEN" ]; then
+    docker login ghcr.io -u umonkey -p "$GHCR_TOKEN"
+fi
+
 # Pull the updates.
 git fetch origin master
 git reset --hard origin/master
