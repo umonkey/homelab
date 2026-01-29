@@ -17,8 +17,9 @@ services:
       - homelab
 
   cron:
-    build:
-      context: services/cron
+    image: ghcr.io/umonkey/homelab-cron:latest
+    #build:
+    #  context: services/cron
     container_name: homelab_cron
     restart: unless-stopped
     secrets:
@@ -26,8 +27,9 @@ services:
       - dropbox_token
 
   nginx:
-    build:
-      context: services/nginx
+    image: ghcr.io/umonkey/homelab-nginx:latest
+    #build:
+    #  context: services/nginx
     container_name: homelab_nginx
     restart: unless-stopped
     environment:
@@ -41,8 +43,9 @@ services:
       - homelab
 
   website-museum:
-    build:
-      context: services/website-museum
+    image: ghcr.io/umonkey/homelab-website-museum:latest
+    #build:
+    #  context: services/website-museum
     container_name: homelab_museum
     restart: unless-stopped
     ports:
@@ -53,8 +56,9 @@ services:
       - homelab
 
   website-files:
-    build:
-      context: services/website-files
+    image: ghcr.io/umonkey/homelab-website-files:latest
+    #build:
+    #  context: services/website-files
     container_name: homelab_files
     restart: unless-stopped
     ports:
@@ -65,8 +69,9 @@ services:
       - homelab
 
   website-land:
-    build:
-      context: services/website-land
+    image: ghcr.io/umonkey/homelab-website-land:latest
+    #build:
+    #  context: services/website-land
     container_name: homelab_land
     restart: unless-stopped
     volumes:
@@ -77,8 +82,9 @@ services:
       - homelab
 
   openvpn:
-    build:
-      context: services/openvpn
+    image: ghcr.io/umonkey/homelab-openvpn:latest
+    #build:
+    #  context: services/openvpn
     container_name: homelab_openvpn
     restart: unless-stopped
     volumes:
