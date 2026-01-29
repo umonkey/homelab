@@ -92,4 +92,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: bash ~/repo/update.sh
+          script: env GHCR_TOKEN=${{ secrets.GHCR_TOKEN }} bash ~/repo/update.sh
