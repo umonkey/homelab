@@ -25,6 +25,17 @@ services:
       - turso_api_token
       - dropbox_token
 
+  nginx:
+    build:
+      context: services/nginx
+    container_name: homelab_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - homelab
+
   website-museum:
     build:
       context: services/website-museum

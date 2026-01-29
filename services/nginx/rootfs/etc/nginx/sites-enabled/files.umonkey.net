@@ -1,0 +1,15 @@
+server {
+    listen 80;
+    listen 443 ssl http2;
+    server_name files.umonkey.net;
+
+    ssl_certificate /etc/letsencrypt/live/umonkey.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/umonkey.net/privkey.pem;
+
+    location / {
+        proxy_pass http://homelab_files:8002;
+    }
+
+    gzip on;
+    gzip_types text/plain text/css text/javascript application/javascript;
+}

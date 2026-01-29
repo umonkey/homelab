@@ -1,9 +1,11 @@
 FROM docker.io/library/debian:stable-slim
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && apt-get install -y --no-install-recommends supervisor nginx \
     && rm -rf /var/lib/apt/lists/*
+
+COPY rootfs /
 
 WORKDIR /app
 
-CMD ["busybox", "crond", "-f", "-l", "5", "-L", "/dev/stderr"]
+CMD ["supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]

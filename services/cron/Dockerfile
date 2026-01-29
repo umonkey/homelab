@@ -1,4 +1,4 @@
-FROM docker.io/debian:stable-slim
+FROM docker.io/library/debian:stable-slim
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates sqlite3 xz-utils rclone busybox-static \

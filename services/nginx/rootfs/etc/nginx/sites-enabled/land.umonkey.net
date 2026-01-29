@@ -1,0 +1,11 @@
+server {
+    listen 80;
+    server_name land.umonkey.net;
+
+    location / {
+        proxy_pass http://homelab_land:8003;
+    }
+
+    gzip on;
+    gzip_types text/plain text/css text/javascript application/javascript;
+}
