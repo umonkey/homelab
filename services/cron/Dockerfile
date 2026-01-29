@@ -14,4 +14,4 @@ RUN chmod 0600 /var/spool/cron/crontabs/app \
 
 WORKDIR /app
 
-CMD ["busybox", "crond", "-f", "-l", "5", "-L", "/dev/stderr"]
+CMD ["busybox", "crond", "-f", "-L", "/dev/stderr"]

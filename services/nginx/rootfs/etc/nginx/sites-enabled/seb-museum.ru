@@ -1,5 +1,6 @@
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name seb-museum.ru;
 
     ssl_certificate /etc/letsencrypt/live/seb-museum.ru/fullchain.pem;
@@ -14,7 +15,8 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name www.seb-museum.ru;
 
     ssl_certificate /etc/letsencrypt/live/seb-museum.ru/fullchain.pem;

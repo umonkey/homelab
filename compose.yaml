@@ -33,6 +33,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - nginx_certs:/etc/letsencrypt
     networks:
       - homelab
 
@@ -80,6 +82,7 @@ volumes:
   museum_data:
   files_data:
   land_data:
+  nginx_certs:
 
 secrets:
   mysql_admin_password:
