@@ -74,6 +74,23 @@ services:
     networks:
       - homelab
 
+  openvpn:
+    build:
+      context: services/openvpn
+    container_name: homelab_openvpn
+    restart: unless-stopped
+    volumes:
+      - openvpn_certs:/var/openvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - "6912:6912/udp"
+      - "6913:6913/tcp"
+    networks:
+      - homelab
+
 networks:
   homelab:
 
@@ -83,6 +100,7 @@ volumes:
   files_data:
   land_data:
   nginx_certs:
+  openvpn_certs:
 
 secrets:
   mysql_admin_password:
