@@ -126,6 +126,8 @@ jobs:
   deploy:
     runs-on: [self-hosted, linux, x64]
 
+    if: ${{ !failure() && !cancelled() }}
+
     needs:
       - build-cron
       - build-nginx
