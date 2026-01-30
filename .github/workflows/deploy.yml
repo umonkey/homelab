@@ -20,9 +20,12 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      backend: ${{ steps.filter.outputs.backend }}
-      frontend: ${{ steps.filter.outputs.frontend }}
-      worker: ${{ steps.filter.outputs.worker }}
+      cron: ${{ steps.filter.outputs.cron }}
+      nginx: ${{ steps.filter.outputs.nginx }}
+      openvpn: ${{ steps.filter.outputs.openvpn }}
+      files: ${{ steps.filter.outputs.files }}
+      land: ${{ steps.filter.outputs.land }}
+      museum: ${{ steps.filter.outputs.museum }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
