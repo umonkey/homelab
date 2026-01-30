@@ -16,8 +16,36 @@ env:
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
 
 jobs:
+  # Check which services actually need deployment.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      worker: ${{ steps.filter.outputs.worker }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            cron:
+              - 'services/cron/**'
+            nginx:
+              - 'services/nginx/**'
+            openvpn:
+              - 'services/openvpn/**'
+            files:
+              - 'services/website-files/**'
+            land:
+              - 'services/website-land/**'
+            museum:
+              - 'services/website-museum/**'
+
   build-cron:
     name: "Build cron"
+    needs: changes
+    if: ${{ needs.changes.outputs.cron == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,6 +57,8 @@ jobs:
 
   build-nginx:
     name: "Build nginx"
+    needs: changes
+    if: ${{ needs.changes.outputs.nginx == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -40,6 +70,8 @@ jobs:
 
   build-openvpn:
     name: "Build openvpn"
+    needs: changes
+    if: ${{ needs.changes.outputs.openvpn == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -51,6 +83,8 @@ jobs:
 
   build-website-files:
     name: "Build website-files"
+    needs: changes
+    if: ${{ needs.changes.outputs.files == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -62,6 +96,8 @@ jobs:
 
   build-website-land:
     name: "Build website-land"
+    needs: changes
+    if: ${{ needs.changes.outputs.land == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -73,6 +109,8 @@ jobs:
 
   build-website-museum:
     name: "Build website-museum"
+    needs: changes
+    if: ${{ needs.changes.outputs.museum == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
