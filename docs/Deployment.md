@@ -28,3 +28,9 @@ Then a job runs that triggers Docker Compose to pull updates and restart service
 3. Execute the steps provided by GitHub, to have the agent running.
 4. Make sure you install it as a service, or use `supervisor` to run it.
 5. Use [this page](https://github.com/umonkey/homelab/settings/actions/runners) to make sure the runner is actually running.
+
+
+## Configuring repo access
+
+The runner needs access to pull from the git repo.
+You need to create an SSH key for the `homelab` user and add it as a deployment key to the repo on [this page](https://github.com/umonkey/homelab/settings/keys).
